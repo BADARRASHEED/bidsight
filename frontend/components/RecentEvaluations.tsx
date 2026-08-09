@@ -1,0 +1,146 @@
+import Link from "next/link";
+import { ArrowRight, Crown, FileSearch } from "lucide-react";
+
+import { StatusBadge } from "@/components/StatusBadge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import type { Evaluation } from "@/lib/types";
+import { formatCurrency, formatDate } from "@/lib/utils";
+
+function evaluationHref(evaluation: Evaluation) {
+  if (
+    evaluation.status === "RECOMMENDATION_READY" ||
+    evaluation.status === "SCORED"
+  ) {
+    return `/evaluations/${evaluation.id}/comparison`;
+  }
+  if (evaluation.status === "REVIEW_REQUIRED") {
+    return `/evaluations/${evaluation.id}/review`;
+  }
+  if (evaluation.status === "QUOTATIONS_UPLOADED") {
+    return `/evaluations/${evaluation.id}/upload`;
+  }
+  return `/evaluations/${evaluation.id}`;
+}
+
+export function RecentEvaluations({
+  evaluations,
+  title = "Recent evaluations",
+  description = "Track current work and reopen completed vendor decisions.",
+  showViewAll = true,
+}: {
+  evaluations: Evaluation[];
+  title?: string;
+  description?: string;
+  showViewAll?: boolean;
+}) {
+  return (
+    <Card className="overflow-hidden">
+      <CardHeader className="flex-row items-start justify-between space-y-0 border-b border-slate-100 px-5 py-5 sm:px-6">
+        <div>
+          <CardTitle>{title}</CardTitle>
+          <p className="mt-1.5 text-sm text-slate-500">{description}</p>
+        </div>
+        {showViewAll && (
+          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
+            <Link href="/evaluations">
+              View all <ArrowRight />
+            </Link>
+          </Button>
+        )}
+      </CardHeader>
+
+      <CardContent className="hidden p-0 md:block">
+        <Table>
+          <TableHeader className="bg-slate-50/80">
+            <TableRow className="hover:bg-transparent">
+              <TableHead className="pl-6">Evaluation</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Quotations</TableHead>
+              <TableHead>Budget</TableHead>
+              <TableHead>Recommended vendor</TableHead>
+              <TableHead className="pr-6 text-right">Updated</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {evaluations.map((evaluation) => (
+              <TableRow key={evaluation.id}>
+                <TableCell className="pl-6">
+                  <Link
+                    href={evaluationHref(evaluation)}
+                    className="group block min-w-[220px]"
+                  >
+                    <p className="font-semibold text-navy-950 transition group-hover:text-teal-700">
+                      {evaluation.title}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      {evaluation.id} · {evaluation.category}
+                    </p>
+                  </Link>
+                </TableCell>
+                <TableCell>
+                  <StatusBadge status={evaluation.status} />
+                </TableCell>
+                <TableCell>
+                  <span className="font-semibold tabular-nums text-slate-700">
+                    {evaluation.quotationsCount}
+                  </span>
+                  <span className="text-slate-400"> / 3</span>
+                </TableCell>
+                <TableCell className="whitespace-nowrap font-medium tabular-nums text-slate-700">
+                  {formatCurrency(Number(evaluation.budget), evaluation.currency, true)}
+                </TableCell>
+                <TableCell>
+                  {evaluation.recommendedVendor ? (
+                    <span className="flex min-w-[170px] items-center gap-1.5 text-sm font-semibold text-emerald-700">
+                      <Crown className="h-3.5 w-3.5" />
+                      {evaluation.recommendedVendor}
+                    </span>
+                  ) : (
+                    <span className="text-sm text-slate-400">Not available</span>
+                  )}
+                </TableCell>
+                <TableCell className="whitespace-nowrap pr-6 text-right text-xs text-slate-500">
+                  {formatDate(evaluation.updatedAt)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </CardContent>
+
+      <CardContent className="divide-y divide-slate-100 p-0 md:hidden">
+        {evaluations.map((evaluation) => (
+          <Link
+            key={evaluation.id}
+            href={evaluationHref(evaluation)}
+            className="block p-5 transition hover:bg-slate-50"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-semibold leading-5 text-navy-950">{evaluation.title}</p>
+                <p className="mt-1 text-xs text-slate-500">{evaluation.id}</p>
+              </div>
+              <StatusBadge status={evaluation.status} />
+            </div>
+            <div className="mt-4 flex items-center justify-between text-xs text-slate-500">
+              <span className="flex items-center gap-1.5">
+                <FileSearch className="h-3.5 w-3.5" />
+                {evaluation.quotationsCount} quotations
+              </span>
+              <span>{formatDate(evaluation.updatedAt)}</span>
+            </div>
+          </Link>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}

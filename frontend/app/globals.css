@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 25% 98%;
+    --foreground: 210 61% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 61% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 61% 12%;
+    --primary: 210 70% 14%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 24% 95%;
+    --secondary-foreground: 210 61% 15%;
+    --muted: 210 24% 96%;
+    --muted-foreground: 215 16% 45%;
+    --accent: 170 83% 29%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 24% 89%;
+    --input: 214 24% 85%;
+    --ring: 170 83% 29%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply min-w-0 overflow-x-hidden bg-background text-foreground antialiased;
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-teal-100 text-teal-900;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .subtle-grid {
+    background-image:
+      linear-gradient(to right, rgba(15, 35, 56, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 35, 56, 0.035) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+}
