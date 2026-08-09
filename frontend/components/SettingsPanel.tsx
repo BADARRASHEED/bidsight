@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle2, Database, Info, Save, Scale, ShieldCheck } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CheckCircle2, Database, Info, Scale, ShieldCheck } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
+import { getHealth } from "@/lib/api";
 
 const scoringWeights = [
   ["Price", 35],
@@ -28,12 +28,23 @@ const scoringWeights = [
 ] as const;
 
 export function SettingsPanel() {
-  const [saved, setSaved] = useState(false);
+  const [connection, setConnection] = useState<
+    "checking" | "connected" | "disconnected"
+  >("checking");
 
-  function saveSettings() {
-    setSaved(true);
-    window.setTimeout(() => setSaved(false), 2500);
-  }
+  useEffect(() => {
+    let cancelled = false;
+    void getHealth()
+      .then(() => {
+        if (!cancelled) setConnection("connected");
+      })
+      .catch(() => {
+        if (!cancelled) setConnection("disconnected");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
@@ -54,7 +65,21 @@ export function SettingsPanel() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="api-url">Backend URL</Label>
-                <Badge variant="warning">Not connected</Badge>
+                <Badge
+                  variant={
+                    connection === "connected"
+                      ? "success"
+                      : connection === "checking"
+                        ? "muted"
+                        : "warning"
+                  }
+                >
+                  {connection === "connected"
+                    ? "Connected"
+                    : connection === "checking"
+                      ? "Checking"
+                      : "Not connected"}
+                </Badge>
               </div>
               <Input id="api-url" value={process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"} readOnly />
               <p className="text-xs text-slate-500">Set <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px]">NEXT_PUBLIC_API_URL</code> in <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px]">.env.local</code>.</p>
@@ -63,7 +88,7 @@ export function SettingsPanel() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label>Default currency</Label>
-                <Select defaultValue="PKR">
+                <Select defaultValue="PKR" disabled>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="PKR">PKR — Pakistani Rupee</SelectItem>
@@ -75,7 +100,13 @@ export function SettingsPanel() {
               <div className="space-y-2">
                 <Label htmlFor="upload-limit">PDF upload limit</Label>
                 <div className="relative">
-                  <Input id="upload-limit" type="number" defaultValue={10} className="pr-12" />
+                  <Input
+                    id="upload-limit"
+                    type="number"
+                    defaultValue={10}
+                    className="pr-12"
+                    readOnly
+                  />
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">MB</span>
                 </div>
               </div>
@@ -110,12 +141,6 @@ export function SettingsPanel() {
           </CardContent>
         </Card>
 
-        <div className="flex justify-end">
-          <Button variant="teal" onClick={saveSettings}>
-            {saved ? <CheckCircle2 /> : <Save />}
-            {saved ? "Settings saved" : "Save settings"}
-          </Button>
-        </div>
       </div>
 
       <div className="space-y-5">

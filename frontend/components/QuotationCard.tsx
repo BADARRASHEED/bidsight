@@ -17,6 +17,7 @@ import { formatFileSize } from "@/lib/utils";
 
 export interface UploadItem {
   id: string;
+  quotationId?: string;
   vendorName: string;
   fileName: string;
   fileSize: number;

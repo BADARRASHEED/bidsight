@@ -71,6 +71,13 @@ export function RecentEvaluations({
             </TableRow>
           </TableHeader>
           <TableBody>
+            {evaluations.length === 0 && (
+              <TableRow>
+                <TableCell colSpan={6} className="h-32 text-center text-sm text-slate-500">
+                  No evaluations yet. Create one to start comparing quotations.
+                </TableCell>
+              </TableRow>
+            )}
             {evaluations.map((evaluation) => (
               <TableRow key={evaluation.id}>
                 <TableCell className="pl-6">
@@ -118,6 +125,11 @@ export function RecentEvaluations({
       </CardContent>
 
       <CardContent className="divide-y divide-slate-100 p-0 md:hidden">
+        {evaluations.length === 0 && (
+          <p className="p-8 text-center text-sm text-slate-500">
+            No evaluations yet. Create one to get started.
+          </p>
+        )}
         {evaluations.map((evaluation) => (
           <Link
             key={evaluation.id}

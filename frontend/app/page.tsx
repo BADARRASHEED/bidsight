@@ -7,13 +7,57 @@ import { PageIntro } from "@/components/PageIntro";
 import { RecentEvaluations } from "@/components/RecentEvaluations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { dashboardStats, mockEvaluations } from "@/lib/mock-data";
+import { getEvaluations } from "@/lib/api";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const evaluations = await getEvaluations().catch(() => []);
+  const completed = evaluations.filter((evaluation) =>
+    ["SCORED", "RECOMMENDATION_READY"].includes(evaluation.status),
+  ).length;
+  const active = evaluations.length - completed;
+  const reviewCount = evaluations.filter(
+    (evaluation) => evaluation.status === "REVIEW_REQUIRED",
+  ).length;
+  const vendorsAnalysed = evaluations.reduce(
+    (total, evaluation) => total + evaluation.quotationsCount,
+    0,
+  );
+  const dashboardStats = [
+    {
+      label: "Total evaluations",
+      value: String(evaluations.length),
+      change: "All procurement evaluations",
+    },
+    {
+      label: "Active evaluations",
+      value: String(active),
+      change: `${reviewCount} need review`,
+    },
+    {
+      label: "Completed",
+      value: String(completed),
+      change: evaluations.length
+        ? `${Math.round((completed / evaluations.length) * 100)}% completion`
+        : "No completed evaluations yet",
+    },
+    {
+      label: "Vendors analysed",
+      value: String(vendorsAnalysed),
+      change: "Across uploaded quotations",
+    },
+  ];
+  const pageDate = new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+  }).format(new Date());
+  const exampleEvaluation = evaluations.find((evaluation) =>
+    ["SCORED", "RECOMMENDATION_READY"].includes(evaluation.status),
+  );
   return (
     <div>
       <PageIntro
-        eyebrow="Sunday, 09 August"
+        eyebrow={pageDate}
         title="Good afternoon, Badar"
         description="Here is what needs attention across your procurement evaluations today."
         actions={
@@ -28,8 +72,8 @@ export default function DashboardPage() {
       <DashboardStats stats={dashboardStats} />
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
-        <RecentEvaluations evaluations={mockEvaluations.slice(0, 4)} />
-        <DashboardActivity />
+        <RecentEvaluations evaluations={evaluations.slice(0, 4)} />
+        <DashboardActivity evaluations={evaluations} />
       </div>
 
       <Card className="mt-5 overflow-hidden border-navy-800 bg-navy-950 text-white">
@@ -50,8 +94,8 @@ export default function DashboardPage() {
             </div>
           </div>
           <Button asChild variant="outline" className="relative border-white/20 bg-white/10 text-white hover:border-white/30 hover:bg-white/15">
-            <Link href="/evaluations/EV-2026-024/comparison">
-              View example comparison <ArrowRight />
+            <Link href={exampleEvaluation ? `/evaluations/${exampleEvaluation.id}/comparison` : "/evaluations"}>
+              {exampleEvaluation ? "View latest comparison" : "View evaluations"} <ArrowRight />
             </Link>
           </Button>
         </div>

@@ -1,10 +1,8 @@
-import { ComparisonActions } from "@/components/ComparisonActions";
+import { ComparisonWorkspace } from "@/components/ComparisonWorkspace";
 import { PageIntro } from "@/components/PageIntro";
-import { RecommendationPanel } from "@/components/RecommendationPanel";
-import { ScoreBreakdown } from "@/components/ScoreBreakdown";
-import { VendorComparisonTable } from "@/components/VendorComparisonTable";
 import { WorkflowStepper } from "@/components/WorkflowStepper";
-import { mockComparison, mockRecommendation } from "@/lib/mock-data";
+import { ApiError, getEvaluation } from "@/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function ComparisonPage({
   params,
@@ -12,20 +10,22 @@ export default async function ComparisonPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  let evaluation;
+  try {
+    evaluation = await getEvaluation(id);
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) notFound();
+    throw error;
+  }
   return (
     <div>
       <PageIntro
-        eyebrow="Computer Lab Laptop Procurement"
+        eyebrow={evaluation.title}
         title="Vendor comparison & recommendation"
         description="Compare verified commercial terms, mandatory compliance, and weighted performance scores."
-        actions={<ComparisonActions evaluationId={id} />}
       />
       <WorkflowStepper evaluationId={id} current="comparison" />
-      <div className="space-y-6">
-        <VendorComparisonTable vendors={mockComparison} />
-        <ScoreBreakdown vendors={mockComparison} />
-        <RecommendationPanel recommendation={mockRecommendation} />
-      </div>
+      <ComparisonWorkspace evaluationId={id} />
     </div>
   );
 }

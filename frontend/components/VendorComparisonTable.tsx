@@ -16,6 +16,11 @@ import type { VendorComparison } from "@/lib/types";
 import { cn, formatCurrency } from "@/lib/utils";
 
 export function VendorComparisonTable({ vendors }: { vendors: VendorComparison[] }) {
+  const lowestPrice = Math.min(
+    ...vendors
+      .map((vendor) => vendor.totalPrice)
+      .filter((price): price is number => price !== null),
+  );
   return (
     <Card className="overflow-hidden">
       <CardHeader className="flex-row items-start justify-between space-y-0 border-b border-slate-100 px-5 py-5 sm:px-6">
@@ -25,7 +30,9 @@ export function VendorComparisonTable({ vendors }: { vendors: VendorComparison[]
             Verified quotations ranked against mandatory requirements and the weighted scoring model.
           </p>
         </div>
-        <Badge variant="outline" className="hidden sm:inline-flex">3 quotations</Badge>
+        <Badge variant="outline" className="hidden sm:inline-flex">
+          {vendors.length} {vendors.length === 1 ? "quotation" : "quotations"}
+        </Badge>
       </CardHeader>
       <CardContent className="p-0">
         <Table>
@@ -42,8 +49,19 @@ export function VendorComparisonTable({ vendors }: { vendors: VendorComparison[]
             </TableRow>
           </TableHeader>
           <TableBody>
-            {vendors.map((vendor) => (
-              <TableRow
+            {vendors.map((vendor) => {
+              const failedChecks =
+                vendor.requirementChecks?.filter(
+                  (check) => check.outcome === "FAIL",
+                ) ?? [];
+              const failureReasons = failedChecks.length
+                ? failedChecks.map((check) => check.reason)
+                : vendor.failedRequirement
+                  ? [vendor.failedRequirement]
+                  : [];
+
+              return (
+                <TableRow
                 key={vendor.id}
                 className={cn(
                   "group",
@@ -95,7 +113,7 @@ export function VendorComparisonTable({ vendors }: { vendors: VendorComparison[]
                       ? "—"
                       : formatCurrency(vendor.totalPrice, vendor.currency)}
                   </p>
-                  {vendor.totalPrice === 3475000 && (
+                  {vendor.totalPrice !== null && vendor.totalPrice === lowestPrice && (
                     <span className="mt-0.5 block text-[10px] font-semibold text-emerald-600">
                       Lowest price
                     </span>
@@ -143,14 +161,23 @@ export function VendorComparisonTable({ vendors }: { vendors: VendorComparison[]
                 </TableCell>
                 <TableCell className="pr-6">
                   <ComplianceBadge status={vendor.status} />
-                  {vendor.failedRequirement && (
-                    <p className="mt-1.5 max-w-[180px] text-[10px] leading-4 text-slate-500">
-                      {vendor.failedRequirement}
+                  {failureReasons.slice(0, 2).map((reason) => (
+                    <p
+                      key={reason}
+                      className="mt-1.5 max-w-[210px] text-[10px] leading-4 text-slate-500"
+                    >
+                      {reason}
+                    </p>
+                  ))}
+                  {failureReasons.length > 2 && (
+                    <p className="mt-1 text-[10px] font-medium text-slate-400">
+                      +{failureReasons.length - 2} more mandatory failures
                     </p>
                   )}
                 </TableCell>
-              </TableRow>
-            ))}
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </CardContent>

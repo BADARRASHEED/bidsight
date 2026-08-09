@@ -1,7 +1,8 @@
 import { EvaluationOverview } from "@/components/EvaluationOverview";
 import { PageIntro } from "@/components/PageIntro";
 import { WorkflowStepper } from "@/components/WorkflowStepper";
-import { mockEvaluations } from "@/lib/mock-data";
+import { ApiError, getEvaluation } from "@/lib/api";
+import { notFound } from "next/navigation";
 
 export default async function EvaluationPage({
   params,
@@ -9,10 +10,13 @@ export default async function EvaluationPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const evaluation = mockEvaluations.find((item) => item.id === id) ?? {
-    ...mockEvaluations[0],
-    id,
-  };
+  let evaluation;
+  try {
+    evaluation = await getEvaluation(id);
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) notFound();
+    throw error;
+  }
 
   return (
     <div className="mx-auto max-w-6xl">

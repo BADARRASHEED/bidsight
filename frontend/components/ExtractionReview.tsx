@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   AlertCircle,
@@ -12,10 +12,14 @@ import {
   FileText,
   Info,
   Loader2,
+  Plus,
   Sparkles,
+  Trash2,
 } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { EmptyState } from "@/components/EmptyState";
+import { LoadingState } from "@/components/LoadingState";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -23,8 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
-import { updateQuotation } from "@/lib/api";
-import { mockQuotations } from "@/lib/mock-data";
+import { ApiError, getQuotations, updateQuotation } from "@/lib/api";
 import type { Quotation, QuotationExtraction } from "@/lib/types";
 import { cn, formatFileSize } from "@/lib/utils";
 
@@ -69,14 +72,12 @@ const fulfilmentFields: FieldDefinition[] = [
     label: "Delivery time",
     type: "number",
     suffix: "days",
-    helper: "Required: maximum 14 days",
   },
   {
     key: "warrantyMonths",
     label: "Warranty",
     type: "number",
     suffix: "months",
-    helper: "Required: minimum 24 months",
   },
   { key: "paymentTerms", label: "Payment terms", type: "textarea" },
   { key: "supportDetails", label: "Support information", type: "textarea" },
@@ -85,26 +86,44 @@ const fulfilmentFields: FieldDefinition[] = [
 function getInitialStatus(quotation: Quotation, key: ReviewFieldKey): FieldStatus {
   const value = quotation.extraction?.[key];
   if (value === null || value === undefined || value === "") return "missing";
-  if (quotation.id === "quote-nexa" && key === "paymentTerms") return "uncertain";
-  if (quotation.id === "quote-orbit" && key === "warrantyMonths") return "invalid";
   return "confirmed";
 }
 
 export function ExtractionReview({ evaluationId }: { evaluationId: string }) {
   const router = useRouter();
-  const [quotations, setQuotations] = useState<Quotation[]>(() =>
-    mockQuotations.map((quotation) => ({
-      ...quotation,
-      evaluationId,
-      extraction: quotation.extraction ? { ...quotation.extraction } : undefined,
-    })),
-  );
-  const [activeId, setActiveId] = useState(quotations[0].id);
+  const [quotations, setQuotations] = useState<Quotation[]>([]);
+  const [activeId, setActiveId] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [statusOverrides, setStatusOverrides] = useState<
     Record<string, Partial<Record<ReviewFieldKey, FieldStatus>>>
   >({});
+
+  useEffect(() => {
+    let cancelled = false;
+    void getQuotations(evaluationId)
+      .then((items) => {
+        if (cancelled) return;
+        setQuotations(items);
+        setActiveId(items[0]?.id ?? "");
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        setLoadError(
+          error instanceof ApiError
+            ? error.message
+            : "Quotation extractions could not be loaded.",
+        );
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [evaluationId]);
 
   const activeIndex = quotations.findIndex((quotation) => quotation.id === activeId);
   const activeQuotation = quotations[activeIndex];
@@ -112,6 +131,7 @@ export function ExtractionReview({ evaluationId }: { evaluationId: string }) {
 
   const fieldStatuses = useMemo(() => {
     const statuses = {} as Record<ReviewFieldKey, FieldStatus>;
+    if (!activeQuotation) return statuses;
     [...commercialFields, ...fulfilmentFields].forEach((field) => {
       statuses[field.key] =
         statusOverrides[activeQuotation.id]?.[field.key] ??
@@ -150,34 +170,89 @@ export function ExtractionReview({ evaluationId }: { evaluationId: string }) {
     }));
   }
 
+  function updateSpecifications(specifications: Record<string, string | number>) {
+    setQuotations((current) =>
+      current.map((quotation) =>
+        quotation.id === activeId
+          ? {
+              ...quotation,
+              extraction: {
+                ...quotation.extraction!,
+                specifications,
+              },
+            }
+          : quotation,
+      ),
+    );
+  }
+
   async function confirmCurrent() {
-    if (!activeQuotation.extraction) return;
+    if (!activeQuotation?.extraction) return;
     setIsSaving(true);
     setNotice(null);
 
     try {
-      await updateQuotation(activeQuotation.id, activeQuotation.extraction);
-    } catch {
-      setNotice(
-        "FastAPI is offline. Your edits remain available in this preview and you can continue to comparison.",
+      const updated = await updateQuotation(
+        activeQuotation.id,
+        activeQuotation.extraction,
       );
+      setQuotations((current) =>
+        current.map((quotation) =>
+          quotation.id === activeId ? updated : quotation,
+        ),
+      );
+    } catch (error) {
+      setNotice(
+        error instanceof ApiError
+          ? error.message
+          : "The reviewed extraction could not be saved.",
+      );
+      setIsSaving(false);
+      return;
     }
-
-    setQuotations((current) =>
-      current.map((quotation) =>
-        quotation.id === activeId ? { ...quotation, reviewed: true } : quotation,
-      ),
-    );
     setIsSaving(false);
 
     if (activeIndex < quotations.length - 1) {
       setActiveId(quotations[activeIndex + 1].id);
     } else {
-      window.setTimeout(
-        () => router.push(`/evaluations/${evaluationId}/comparison`),
-        300,
-      );
+      router.push(`/evaluations/${evaluationId}/comparison`);
     }
+  }
+
+  if (isLoading) return <LoadingState />;
+
+  if (loadError) {
+    return (
+      <Alert variant="destructive">
+        <AlertTriangle />
+        <AlertTitle>Could not load quotation extraction</AlertTitle>
+        <AlertDescription>{loadError}</AlertDescription>
+      </Alert>
+    );
+  }
+
+  if (!activeQuotation) {
+    return (
+      <EmptyState
+        icon={FileText}
+        title="No processed quotations"
+        description="Upload and process at least one quotation before starting extraction review."
+        actionLabel="Return to quotation upload"
+        actionHref={`/evaluations/${evaluationId}/upload`}
+      />
+    );
+  }
+
+  if (!activeQuotation.extraction) {
+    return (
+      <EmptyState
+        icon={FileText}
+        title="Extraction is not ready"
+        description="Return to quotation upload and retry processing for this PDF."
+        actionLabel="Return to quotation upload"
+        actionHref={`/evaluations/${evaluationId}/upload`}
+      />
+    );
   }
 
   return (
@@ -185,7 +260,7 @@ export function ExtractionReview({ evaluationId }: { evaluationId: string }) {
       {notice && (
         <Alert variant="warning">
           <AlertTriangle />
-          <AlertTitle>Preview changes saved locally</AlertTitle>
+          <AlertTitle>Review could not be saved</AlertTitle>
           <AlertDescription>{notice}</AlertDescription>
         </Alert>
       )}
@@ -306,6 +381,13 @@ export function ExtractionReview({ evaluationId }: { evaluationId: string }) {
 
           <div className="my-7 h-px bg-slate-200" />
 
+          <SpecificationEditor
+            specifications={activeQuotation.extraction.specifications ?? {}}
+            onChange={updateSpecifications}
+          />
+
+          <div className="my-7 h-px bg-slate-200" />
+
           <ReviewSection
             title="Fulfilment & after-sales"
             description="Validate the delivery commitment, warranty, payment, and support terms."
@@ -350,6 +432,104 @@ export function ExtractionReview({ evaluationId }: { evaluationId: string }) {
   );
 }
 
+function SpecificationEditor({
+  specifications,
+  onChange,
+}: {
+  specifications: Record<string, string | number>;
+  onChange: (specifications: Record<string, string | number>) => void;
+}) {
+  const entries = Object.entries(specifications);
+
+  function replaceEntry(
+    currentKey: string,
+    nextKey: string,
+    nextValue: string | number,
+  ) {
+    const updated: Record<string, string | number> = {};
+    for (const [key, value] of entries) {
+      if (key === currentKey) {
+        if (nextKey.trim()) updated[nextKey.trim()] = nextValue;
+      } else {
+        updated[key] = value;
+      }
+    }
+    onChange(updated);
+  }
+
+  function addSpecification() {
+    let index = entries.length + 1;
+    let key = `Specification ${index}`;
+    while (key in specifications) {
+      index += 1;
+      key = `Specification ${index}`;
+    }
+    onChange({ ...specifications, [key]: "" });
+  }
+
+  function removeSpecification(keyToRemove: string) {
+    onChange(
+      Object.fromEntries(entries.filter(([key]) => key !== keyToRemove)),
+    );
+  }
+
+  return (
+    <section>
+      <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
+        <div>
+          <h3 className="text-sm font-semibold text-navy-950">
+            Technical specifications
+          </h3>
+          <p className="mt-1 text-xs leading-5 text-slate-500">
+            Confirm processor, memory, storage, and other values used in requirement checks.
+          </p>
+        </div>
+        <Button type="button" variant="outline" size="sm" onClick={addSpecification}>
+          <Plus /> Add specification
+        </Button>
+      </div>
+
+      {entries.length ? (
+        <div className="space-y-3">
+          {entries.map(([key, value], index) => (
+            <div
+              key={key}
+              className="grid gap-3 rounded-md border border-slate-200 bg-slate-50/60 p-3 sm:grid-cols-[minmax(150px,0.8fr)_minmax(200px,1.4fr)_40px]"
+            >
+              <Input
+                aria-label={`Specification ${index + 1} name`}
+                value={key}
+                onChange={(event) => replaceEntry(key, event.target.value, value)}
+                placeholder="Specification name"
+              />
+              <Input
+                aria-label={`Specification ${index + 1} value`}
+                value={String(value)}
+                onChange={(event) => replaceEntry(key, key, event.target.value)}
+                placeholder="Extracted value"
+              />
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                className="text-slate-400 hover:bg-red-50 hover:text-red-600"
+                onClick={() => removeSpecification(key)}
+                aria-label={`Remove ${key}`}
+              >
+                <Trash2 />
+              </Button>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          No technical specifications were extracted. Add the values needed for compliance checks.
+        </div>
+      )}
+    </section>
+  );
+}
+
 function ReviewSection({
   title,
   description,
@@ -388,6 +568,8 @@ function ReviewSection({
             (status === "missing" || status === "invalid") &&
               "border-red-300 bg-red-50/40 focus-visible:border-red-500 focus-visible:ring-red-500/10",
           );
+          const suffix =
+            field.suffix === "PKR" ? extraction.currency ?? "currency" : field.suffix;
 
           return (
             <div key={field.key} className="space-y-2">
@@ -427,12 +609,12 @@ function ReviewSection({
                     value={value == null ? "" : String(value)}
                     onChange={(event) => onChange(field.key, event.target.value, field.type)}
                     placeholder="Not found"
-                    className={cn(field.suffix && "pr-20", fieldClass)}
+                    className={cn(suffix && "pr-20", fieldClass)}
                   />
                 )}
-                {field.suffix && field.type !== "textarea" && (
+                {suffix && field.type !== "textarea" && (
                   <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-slate-400">
-                    {field.suffix}
+                    {suffix}
                   </span>
                 )}
               </div>

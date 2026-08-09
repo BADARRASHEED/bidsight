@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   AlertTriangle,
@@ -17,40 +17,55 @@ import { QuotationCard, type UploadItem } from "@/components/QuotationCard";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { uploadQuotation } from "@/lib/api";
+import {
+  ApiError,
+  deleteQuotation,
+  getQuotations,
+  processQuotation,
+  uploadQuotation,
+} from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const MAX_FILES = 3;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
-const demoItems: UploadItem[] = [
-  {
-    id: "demo-techcore",
-    vendorName: "TechCore Solutions",
-    fileName: "TechCore_Latitude_Quotation.pdf",
-    fileSize: 2457600,
-    status: "ready",
-    progress: 100,
-  },
-  {
-    id: "demo-nexa",
-    vendorName: "Nexa Systems",
-    fileName: "Nexa_Systems_Proposal.pdf",
-    fileSize: 1835008,
-    status: "ready",
-    progress: 100,
-  },
-];
-
 export function QuotationUploader({ evaluationId }: { evaluationId: string }) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [items, setItems] = useState<UploadItem[]>(demoItems);
+  const [items, setItems] = useState<UploadItem[]>([]);
   const [dragging, setDragging] = useState(false);
-  const [validationError, setValidationError] = useState(
-    "Northstar_Pricing.xlsx was rejected. Only PDF quotation files are supported.",
-  );
+  const [validationError, setValidationError] = useState("");
   const [isContinuing, setIsContinuing] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    void getQuotations(evaluationId)
+      .then((quotations) => {
+        if (cancelled) return;
+        const savedItems: UploadItem[] = quotations.map((quotation) => ({
+          id: quotation.id,
+          quotationId: quotation.id,
+          vendorName: quotation.vendorName,
+          fileName: quotation.fileName,
+          fileSize: quotation.fileSize ?? 0,
+          status:
+            quotation.processingStatus === "READY"
+              ? "ready"
+              : quotation.processingStatus === "ERROR"
+                ? "error"
+                : "pending",
+          progress: quotation.processingStatus === "READY" ? 100 : 0,
+          error: quotation.errorMessage ?? undefined,
+        }));
+        setItems((current) => (current.length ? current : savedItems));
+      })
+      .catch(() => {
+        // Upload actions below provide the relevant API error inline.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [evaluationId]);
 
   function addFiles(files: File[]) {
     setValidationError("");
@@ -93,28 +108,62 @@ export function QuotationUploader({ evaluationId }: { evaluationId: string }) {
   }
 
   async function uploadItem(item: UploadItem) {
-    if (!item.file) return true;
-    updateItem(item.id, { status: "uploading", progress: 34, error: undefined });
+    if (!item.file && !item.quotationId) return false;
+    updateItem(item.id, {
+      status: item.quotationId ? "processing" : "uploading",
+      progress: item.quotationId ? 62 : 34,
+      error: undefined,
+    });
 
     try {
-      await uploadQuotation(evaluationId, item.file, item.vendorName);
-      updateItem(item.id, { status: "processing", progress: 72 });
-      await new Promise((resolve) => window.setTimeout(resolve, 500));
+      let quotationId = item.quotationId;
+      if (!quotationId && item.file) {
+        const quotation = await uploadQuotation(
+          evaluationId,
+          item.file,
+          item.vendorName,
+        );
+        quotationId = quotation.id;
+        updateItem(item.id, {
+          quotationId,
+          status: "processing",
+          progress: 62,
+        });
+      }
+      if (!quotationId) throw new Error("Quotation upload did not return an ID.");
+      await processQuotation(quotationId);
       updateItem(item.id, { status: "ready", progress: 100 });
       return true;
-    } catch {
+    } catch (error) {
       updateItem(item.id, {
         status: "error",
         progress: 42,
-        error: "The API could not process this quotation. Start FastAPI, then retry.",
+        error:
+          error instanceof ApiError
+            ? error.message
+            : "The API could not process this quotation. Please retry.",
       });
       return false;
     }
   }
 
+  async function removeItem(item: UploadItem) {
+    if (item.quotationId) {
+      try {
+        await deleteQuotation(item.quotationId);
+      } catch (error) {
+        setValidationError(
+          error instanceof ApiError ? error.message : "The quotation could not be removed.",
+        );
+        return;
+      }
+    }
+    setItems((current) => current.filter((entry) => entry.id !== item.id));
+  }
+
   async function handleContinue() {
-    if (items.length < 2) {
-      setValidationError("Add at least two PDF quotations before continuing to extraction review.");
+    if (items.length < 1) {
+      setValidationError("Add at least one PDF quotation before continuing to extraction review.");
       return;
     }
 
@@ -220,7 +269,7 @@ export function QuotationUploader({ evaluationId }: { evaluationId: string }) {
               Confirm vendor names before extraction review.
             </p>
           </div>
-          <span className="hidden text-xs font-medium text-slate-400 sm:block">Minimum 2 required</span>
+          <span className="hidden text-xs font-medium text-slate-400 sm:block">1 to 3 PDFs</span>
         </div>
 
         {items.map((item, index) => (
@@ -228,7 +277,7 @@ export function QuotationUploader({ evaluationId }: { evaluationId: string }) {
             key={item.id}
             item={item}
             index={index}
-            onRemove={() => setItems((current) => current.filter((entry) => entry.id !== item.id))}
+            onRemove={() => void removeItem(item)}
             onRetry={() => void uploadItem(item)}
             onVendorChange={(vendorName) => updateItem(item.id, { vendorName })}
           />
@@ -250,7 +299,7 @@ export function QuotationUploader({ evaluationId }: { evaluationId: string }) {
         <Button
           variant="teal"
           onClick={handleContinue}
-          disabled={items.length < 2 || isContinuing}
+          disabled={items.length < 1 || isContinuing}
         >
           {isContinuing ? <Loader2 className="animate-spin" /> : <ArrowRight />}
           Upload & review extraction

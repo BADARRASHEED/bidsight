@@ -1,0 +1,147 @@
+{
+  "scenario": "Computer Lab Laptop Procurement",
+  "evaluation": {
+    "title": "Computer Lab Laptop Procurement",
+    "organisation_name": "Asteria Institute of Technology",
+    "procurement_reference": "AIT-PROC-2026-081",
+    "quantity": 25,
+    "budget": 4000000,
+    "currency": "PKR",
+    "delivery_requirement_days": 14,
+    "mandatory_requirements": {
+      "processor": "Intel Core i5 or equivalent",
+      "ram_gb_minimum": 16,
+      "storage_gb_minimum": 512,
+      "warranty_months_minimum": 24,
+      "delivery_days_maximum": 14
+    }
+  },
+  "vendors": [
+    {
+      "filename": "techcore-solutions-quotation.pdf",
+      "vendor_name": "TechCore Solutions",
+      "product_name": "Dell Latitude Business Laptop",
+      "product_model": "Dell Latitude 5550",
+      "processor": "Intel Core i5-1335U (13th Generation)",
+      "specifications": {
+        "Processor": "Intel Core i5-1335U (13th Generation)",
+        "RAM": "16 GB",
+        "Storage": "512 GB SSD",
+        "Operating System": "Windows 11 Pro, 64-bit"
+      },
+      "quantity": 25,
+      "unit_price": 145000,
+      "subtotal": 3625000,
+      "tax": 0,
+      "total_price": 3625000,
+      "currency": "PKR",
+      "delivery_days": 10,
+      "warranty_months": 36,
+      "payment_terms": "30% advance with purchase order; 70% on delivery and inspection",
+      "support_details": "Three years of onsite hardware support during business hours, with next-business-day initial response and remote helpdesk access",
+      "quotation_validity_days": 30,
+      "expected_status": "compliant",
+      "expected_recommendation": true,
+      "expected_failures": [],
+      "mandatory_compliance": {
+        "processor": true,
+        "ram": true,
+        "storage": true,
+        "delivery": true,
+        "warranty": true
+      },
+      "calculation": {
+        "formula": "25 x 145000 + 0 = 3625000",
+        "quantity_times_unit_price": 3625000
+      }
+    },
+    {
+      "filename": "digital-systems-quotation.pdf",
+      "vendor_name": "Digital Systems",
+      "product_name": "HP ProBook Business Laptop",
+      "product_model": "HP ProBook 440 G10",
+      "processor": "Intel Core i5-1335U (13th Generation)",
+      "specifications": {
+        "Processor": "Intel Core i5-1335U (13th Generation)",
+        "RAM": "16 GB",
+        "Storage": "512 GB SSD",
+        "Operating System": "Windows 11 Pro, 64-bit"
+      },
+      "quantity": 25,
+      "unit_price": 138000,
+      "subtotal": 3450000,
+      "tax": 0,
+      "total_price": 3450000,
+      "currency": "PKR",
+      "delivery_days": 18,
+      "warranty_months": 24,
+      "payment_terms": "20% advance with purchase order; 80% within 7 days after delivery",
+      "support_details": "Remote technical support during business hours and carry-in warranty coordination at the Islamabad service desk",
+      "quotation_validity_days": 21,
+      "expected_status": "non_compliant",
+      "expected_recommendation": false,
+      "expected_failures": [
+        "delivery"
+      ],
+      "mandatory_compliance": {
+        "processor": true,
+        "ram": true,
+        "storage": true,
+        "delivery": false,
+        "warranty": true
+      },
+      "calculation": {
+        "formula": "25 x 138000 + 0 = 3450000",
+        "quantity_times_unit_price": 3450000
+      }
+    },
+    {
+      "filename": "future-computers-quotation.pdf",
+      "vendor_name": "Future Computers",
+      "product_name": "Lenovo Business Laptop",
+      "product_model": "Lenovo ThinkBook 15 G4 IAP",
+      "processor": "Intel Core i5-1235U (12th Generation)",
+      "specifications": {
+        "Processor": "Intel Core i5-1235U (12th Generation)",
+        "RAM": "8 GB",
+        "Storage": "512 GB SSD",
+        "Operating System": "Windows 11 Pro, 64-bit"
+      },
+      "quantity": 25,
+      "unit_price": 132000,
+      "subtotal": 3300000,
+      "tax": 0,
+      "total_price": 3300000,
+      "currency": "PKR",
+      "delivery_days": 7,
+      "warranty_months": 12,
+      "payment_terms": "50% advance with purchase order; 50% before dispatch",
+      "support_details": "Telephone support during business hours and return-to-base hardware service in Lahore",
+      "quotation_validity_days": 14,
+      "expected_status": "non_compliant",
+      "expected_recommendation": false,
+      "expected_failures": [
+        "ram",
+        "warranty"
+      ],
+      "mandatory_compliance": {
+        "processor": true,
+        "ram": false,
+        "storage": true,
+        "delivery": true,
+        "warranty": false
+      },
+      "calculation": {
+        "formula": "25 x 132000 + 0 = 3300000",
+        "quantity_times_unit_price": 3300000
+      }
+    }
+  ],
+  "expected_recommended_vendor": "TechCore Solutions",
+  "expected_price_order_low_to_high": [
+    "Future Computers",
+    "Digital Systems",
+    "TechCore Solutions"
+  ],
+  "arithmetic_verified": true
+}

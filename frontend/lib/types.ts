@@ -67,6 +67,7 @@ export interface QuotationExtraction {
   paymentTerms: string | null;
   supportDetails: string | null;
   quotationValidityDays?: number | null;
+  specifications?: Record<string, string | number>;
   extractionNotes?: string[];
   sourcePages?: Record<string, number>;
   reviewed?: boolean;
@@ -103,6 +104,17 @@ export interface VendorComparison {
   rank: number | null;
   isRecommended?: boolean;
   failedRequirement?: string | null;
+  requirementChecks?: RequirementCheck[];
+  risks?: string[];
+  missingInformation?: string[];
+}
+
+export interface RequirementCheck {
+  requirementName: string;
+  expectedValue: string;
+  actualValue: string | null;
+  outcome: "PASS" | "FAIL" | "UNKNOWN";
+  reason: string;
 }
 
 export interface Recommendation {
@@ -118,5 +130,9 @@ export interface Recommendation {
 export interface ComparisonResponse {
   evaluationId: string;
   vendors: VendorComparison[];
-  recommendation?: Recommendation;
+  recommendation?: Recommendation | null;
+}
+
+export interface HealthResponse {
+  status: string;
 }

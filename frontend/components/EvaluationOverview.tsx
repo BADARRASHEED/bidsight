@@ -82,20 +82,24 @@ export function EvaluationOverview({ evaluation }: { evaluation: Evaluation }) {
             <CardTitle>Evaluation requirements</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
-            {[
-              ["Minimum RAM", "16 GB", "Mandatory"],
-              ["Minimum warranty", "24 months", "Mandatory"],
-              ["Delivery", "Maximum 14 days", "Mandatory"],
-              ["Onsite support", "Business hours", "Preferred"],
-            ].map(([name, value, type]) => (
-              <div key={name} className="flex items-center justify-between gap-4 border-b border-slate-100 px-5 py-4 last:border-0 sm:px-6">
+            {evaluation.requirements.map((requirement) => (
+              <div key={requirement.id ?? requirement.name} className="flex items-center justify-between gap-4 border-b border-slate-100 px-5 py-4 last:border-0 sm:px-6">
                 <div>
-                  <p className="text-sm font-semibold text-slate-800">{name}</p>
-                  <p className="mt-0.5 text-xs text-slate-500">{value}</p>
+                  <p className="text-sm font-semibold text-slate-800">{requirement.name}</p>
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    {requirement.expectedValue}{requirement.unit ? ` ${requirement.unit}` : ""}
+                  </p>
                 </div>
-                <Badge variant={type === "Mandatory" ? "teal" : "muted"}>{type}</Badge>
+                <Badge variant={requirement.type === "MANDATORY" ? "teal" : "muted"}>
+                  {requirement.type === "MANDATORY" ? "Mandatory" : "Preferred"}
+                </Badge>
               </div>
             ))}
+            {evaluation.requirements.length === 0 && (
+              <p className="px-5 py-8 text-center text-sm text-slate-500 sm:px-6">
+                No additional requirements have been defined.
+              </p>
+            )}
           </CardContent>
         </Card>
 
@@ -116,7 +120,7 @@ export function EvaluationOverview({ evaluation }: { evaluation: Evaluation }) {
               title="Vendor quotations"
               description={`${evaluation.quotationsCount} of 3 uploaded`}
               href={`/evaluations/${evaluation.id}/upload`}
-              complete={evaluation.quotationsCount >= 2}
+              complete={evaluation.quotationsCount >= 1}
             />
             <WorkflowLink
               icon={ClipboardCheck}

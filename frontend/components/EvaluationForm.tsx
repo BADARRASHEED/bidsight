@@ -18,17 +18,32 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { createEvaluation } from "@/lib/api";
+import { ApiError, createEvaluation } from "@/lib/api";
 import type { EvaluationInput, Requirement } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const initialRequirements: Requirement[] = [
+  {
+    id: "processor",
+    name: "Processor",
+    expectedValue: "Intel Core i5 or equivalent",
+    type: "MANDATORY",
+  },
   {
     id: "ram",
     name: "Minimum RAM",
     expectedValue: "16",
     unit: "GB",
     type: "MANDATORY",
+    operator: "gte",
+  },
+  {
+    id: "storage",
+    name: "Minimum storage",
+    expectedValue: "512",
+    unit: "GB",
+    type: "MANDATORY",
+    operator: "gte",
   },
   {
     id: "warranty",
@@ -36,13 +51,15 @@ const initialRequirements: Requirement[] = [
     expectedValue: "24",
     unit: "months",
     type: "MANDATORY",
+    operator: "gte",
   },
   {
     id: "delivery",
     name: "Delivery",
-    expectedValue: "Maximum 14",
+    expectedValue: "14",
     unit: "days",
     type: "MANDATORY",
+    operator: "lte",
   },
 ];
 
@@ -52,14 +69,13 @@ export function EvaluationForm() {
   const [showErrors, setShowErrors] = useState(false);
   const [apiNotice, setApiNotice] = useState<string | null>(null);
   const [form, setForm] = useState<EvaluationInput>({
-    title: "Computer Lab Laptop Procurement",
-    category: "IT Equipment",
-    quantity: 25,
-    budget: "4000000",
+    title: "",
+    category: "",
+    quantity: 1,
+    budget: "",
     currency: "PKR",
     requiredDeliveryDays: 14,
-    notes:
-      "Business-class laptops for the new computer lab. Prioritise onsite support and reliable delivery.",
+    notes: "",
     requirements: initialRequirements,
   });
 
@@ -95,13 +111,12 @@ export function EvaluationForm() {
     try {
       const evaluation = await createEvaluation(form);
       router.push(`/evaluations/${evaluation.id}/upload`);
-    } catch {
+    } catch (error) {
       setApiNotice(
-        "FastAPI is not available, so BidSight has opened the polished demo workflow with your form data held locally.",
+        error instanceof ApiError
+          ? error.message
+          : "The evaluation could not be created. Please try again.",
       );
-      window.setTimeout(() => {
-        router.push("/evaluations/EV-2026-024/upload?demo=true");
-      }, 950);
     } finally {
       setIsSubmitting(false);
     }
@@ -112,7 +127,7 @@ export function EvaluationForm() {
       {apiNotice && (
         <Alert variant="warning">
           <AlertTriangle />
-          <AlertTitle>Preview mode enabled</AlertTitle>
+          <AlertTitle>Evaluation not created</AlertTitle>
           <AlertDescription>{apiNotice}</AlertDescription>
         </Alert>
       )}

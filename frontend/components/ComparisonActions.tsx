@@ -5,9 +5,18 @@ import Link from "next/link";
 import { CheckCircle2, Loader2, RefreshCw, WandSparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { generateRecommendation, runEvaluation } from "@/lib/api";
+import { ApiError, generateRecommendation, runEvaluation } from "@/lib/api";
+import type { ComparisonResponse, Recommendation } from "@/lib/types";
 
-export function ComparisonActions({ evaluationId }: { evaluationId: string }) {
+export function ComparisonActions({
+  evaluationId,
+  onScored,
+  onRecommended,
+}: {
+  evaluationId: string;
+  onScored?: (comparison: ComparisonResponse) => void;
+  onRecommended?: (recommendation: Recommendation) => void;
+}) {
   const [action, setAction] = useState<"score" | "recommend" | null>(null);
   const [status, setStatus] = useState<string | null>(null);
 
@@ -15,10 +24,11 @@ export function ComparisonActions({ evaluationId }: { evaluationId: string }) {
     setAction("score");
     setStatus(null);
     try {
-      await runEvaluation(evaluationId);
+      const comparison = await runEvaluation(evaluationId);
+      onScored?.(comparison);
       setStatus("Scores updated from FastAPI.");
-    } catch {
-      setStatus("Preview scores are shown while FastAPI is offline.");
+    } catch (error) {
+      setStatus(error instanceof ApiError ? error.message : "Scores could not be updated.");
     } finally {
       setAction(null);
     }
@@ -28,10 +38,15 @@ export function ComparisonActions({ evaluationId }: { evaluationId: string }) {
     setAction("recommend");
     setStatus(null);
     try {
-      await generateRecommendation(evaluationId);
+      const recommendation = await generateRecommendation(evaluationId);
+      onRecommended?.(recommendation);
       setStatus("Recommendation refreshed from verified results.");
-    } catch {
-      setStatus("Preview recommendation is shown while FastAPI is offline.");
+    } catch (error) {
+      setStatus(
+        error instanceof ApiError
+          ? error.message
+          : "The recommendation could not be generated.",
+      );
     } finally {
       setAction(null);
     }

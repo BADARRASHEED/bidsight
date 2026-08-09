@@ -10,7 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Recommendation } from "@/lib/types";
 
-export function RecommendationPanel({ recommendation }: { recommendation: Recommendation }) {
+export function RecommendationPanel({
+  recommendation,
+  overallScore,
+}: {
+  recommendation: Recommendation;
+  overallScore?: number;
+}) {
   return (
     <Card className="overflow-hidden border-teal-200">
       <div className="border-b border-teal-100 bg-teal-50/70 px-5 py-5 sm:px-6">
@@ -33,7 +39,10 @@ export function RecommendationPanel({ recommendation }: { recommendation: Recomm
           </div>
           <div className="text-left sm:text-right">
             <p className="text-xs font-medium text-slate-500">Overall score</p>
-            <p className="mt-0.5 text-2xl font-bold tabular-nums text-teal-700">95.6<span className="text-sm">/100</span></p>
+            <p className="mt-0.5 text-2xl font-bold tabular-nums text-teal-700">
+              {overallScore?.toFixed(1) ?? "—"}
+              <span className="text-sm">/100</span>
+            </p>
           </div>
         </div>
       </div>

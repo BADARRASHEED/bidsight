@@ -2,6 +2,7 @@ import type {
   ComparisonResponse,
   Evaluation,
   EvaluationInput,
+  HealthResponse,
   Quotation,
   QuotationExtraction,
   Recommendation,
@@ -89,6 +90,10 @@ export function getEvaluation(id: string) {
   return request<Evaluation>(`/api/evaluations/${id}`);
 }
 
+export function getHealth() {
+  return request<HealthResponse>("/api/health");
+}
+
 export function uploadQuotation(
   evaluationId: string,
   file: File,
@@ -101,6 +106,22 @@ export function uploadQuotation(
   return request<Quotation>(`/api/evaluations/${evaluationId}/quotations`, {
     method: "POST",
     body: formData,
+  });
+}
+
+export function getQuotations(evaluationId: string) {
+  return request<Quotation[]>(`/api/evaluations/${evaluationId}/quotations`);
+}
+
+export function processQuotation(quotationId: string) {
+  return request<Quotation>(`/api/quotations/${quotationId}/process`, {
+    method: "POST",
+  });
+}
+
+export function deleteQuotation(quotationId: string) {
+  return request<void>(`/api/quotations/${quotationId}`, {
+    method: "DELETE",
   });
 }
 

@@ -1,4 +1,4 @@
-import { Building2, CheckCircle2, FileText, Mail, MapPin, MoreHorizontal } from "lucide-react";
+import { Building2, CheckCircle2, FileText, MoreHorizontal } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,55 +11,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { formatDate } from "@/lib/utils";
 
-const vendors = [
-  {
-    name: "TechCore Solutions",
-    initials: "TS",
-    category: "IT Equipment",
-    location: "Lahore",
-    email: "sales@techcore.example",
-    quotations: 8,
-    wins: 4,
-    lastAnalysed: "09 Aug 2026",
-    status: "Verified",
-  },
-  {
-    name: "Nexa Systems",
-    initials: "NS",
-    category: "IT & Networking",
-    location: "Islamabad",
-    email: "bids@nexa.example",
-    quotations: 6,
-    wins: 2,
-    lastAnalysed: "09 Aug 2026",
-    status: "Verified",
-  },
-  {
-    name: "Orbit Technologies",
-    initials: "OT",
-    category: "Enterprise Technology",
-    location: "Karachi",
-    email: "proposals@orbit.example",
-    quotations: 5,
-    wins: 1,
-    lastAnalysed: "09 Aug 2026",
-    status: "Needs details",
-  },
-  {
-    name: "Vertex Office Systems",
-    initials: "VO",
-    category: "Office Technology",
-    location: "Lahore",
-    email: "sales@vertex.example",
-    quotations: 4,
-    wins: 1,
-    lastAnalysed: "01 Aug 2026",
-    status: "Verified",
-  },
-];
+export interface VendorDirectoryItem {
+  name: string;
+  category: string;
+  quotations: number;
+  selections: number;
+  lastAnalysed: string;
+  reviewed: boolean;
+}
 
-export function VendorDirectory() {
+export function VendorDirectory({ vendors }: { vendors: VendorDirectoryItem[] }) {
   return (
     <Card className="overflow-hidden">
       <CardContent className="p-0">
@@ -81,14 +44,18 @@ export function VendorDirectory() {
                 <TableCell className="pl-6">
                   <div className="flex items-start gap-3">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-navy-900 text-xs font-bold text-white">
-                      {vendor.initials}
+                      {vendor.name
+                        .split(/\s+/)
+                        .slice(0, 2)
+                        .map((part) => part[0])
+                        .join("")
+                        .toUpperCase()}
                     </span>
                     <div>
                       <p className="font-semibold text-navy-950">{vendor.name}</p>
-                      <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-500">
-                        <span className="flex items-center gap-1"><MapPin className="h-3 w-3" />{vendor.location}</span>
-                        <span className="flex items-center gap-1"><Mail className="h-3 w-3" />{vendor.email}</span>
-                      </div>
+                      <p className="mt-1 text-[11px] text-slate-500">
+                        Discovered from uploaded quotations
+                      </p>
                     </div>
                   </div>
                 </TableCell>
@@ -96,12 +63,12 @@ export function VendorDirectory() {
                 <TableCell>
                   <span className="flex items-center gap-1.5 font-semibold text-slate-700"><FileText className="h-3.5 w-3.5 text-slate-400" />{vendor.quotations}</span>
                 </TableCell>
-                <TableCell className="font-semibold tabular-nums text-slate-700">{vendor.wins}</TableCell>
-                <TableCell className="whitespace-nowrap text-xs text-slate-500">{vendor.lastAnalysed}</TableCell>
+                <TableCell className="font-semibold tabular-nums text-slate-700">{vendor.selections}</TableCell>
+                <TableCell className="whitespace-nowrap text-xs text-slate-500">{formatDate(vendor.lastAnalysed)}</TableCell>
                 <TableCell>
-                  <Badge variant={vendor.status === "Verified" ? "success" : "warning"} className="gap-1">
-                    {vendor.status === "Verified" && <CheckCircle2 className="h-3 w-3" />}
-                    {vendor.status}
+                  <Badge variant={vendor.reviewed ? "success" : "warning"} className="gap-1">
+                    {vendor.reviewed && <CheckCircle2 className="h-3 w-3" />}
+                    {vendor.reviewed ? "Reviewed" : "Needs review"}
                   </Badge>
                 </TableCell>
                 <TableCell className="pr-6 text-right">
@@ -113,18 +80,32 @@ export function VendorDirectory() {
             ))}
           </TableBody>
         </Table>
+        {vendors.length === 0 && (
+          <p className="px-6 py-12 text-center text-sm text-slate-500">
+            Vendors will appear after quotation PDFs are uploaded.
+          </p>
+        )}
       </CardContent>
     </Card>
   );
 }
 
-export function VendorSummaryCards() {
+export function VendorSummaryCards({ vendors }: { vendors: VendorDirectoryItem[] }) {
+  const quotationCount = vendors.reduce((total, vendor) => total + vendor.quotations, 0);
+  const selectedCount = vendors.reduce((total, vendor) => total + vendor.selections, 0);
   return (
     <div className="mb-5 grid gap-4 sm:grid-cols-3">
       {[
-        [Building2, "Known vendors", "14", "Across 6 categories"],
-        [FileText, "Quotations analysed", "57", "12 in the last 30 days"],
-        [CheckCircle2, "Selected vendors", "18", "31.6% selection rate"],
+        [Building2, "Known vendors", String(vendors.length), "From saved evaluations"],
+        [FileText, "Quotations analysed", String(quotationCount), "Uploaded vendor PDFs"],
+        [
+          CheckCircle2,
+          "Selected vendors",
+          String(selectedCount),
+          quotationCount
+            ? `${Math.round((selectedCount / quotationCount) * 100)}% selection rate`
+            : "No selections yet",
+        ],
       ].map(([Icon, label, value, detail]) => (
         <Card key={String(label)}>
           <CardContent className="flex items-start justify-between p-5">

@@ -1,13 +1,15 @@
 import Link from "next/link";
-import { Download, Filter, Plus, Search } from "lucide-react";
+import { ClipboardList, Download, Filter, Plus, Search } from "lucide-react";
 
+import { EmptyState } from "@/components/EmptyState";
 import { PageIntro } from "@/components/PageIntro";
 import { RecentEvaluations } from "@/components/RecentEvaluations";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { mockEvaluations } from "@/lib/mock-data";
+import { getEvaluations } from "@/lib/api";
 
-export default function EvaluationsPage() {
+export default async function EvaluationsPage() {
+  const evaluations = await getEvaluations().catch(() => []);
   return (
     <div>
       <PageIntro
@@ -42,12 +44,22 @@ export default function EvaluationsPage() {
         </CardContent>
       </Card>
 
-      <RecentEvaluations
-        evaluations={mockEvaluations}
-        title="All evaluations"
-        description="5 records · Sorted by most recently updated"
-        showViewAll={false}
-      />
+      {evaluations.length ? (
+        <RecentEvaluations
+          evaluations={evaluations}
+          title="All evaluations"
+          description={`${evaluations.length} ${evaluations.length === 1 ? "record" : "records"} · Sorted by most recently updated`}
+          showViewAll={false}
+        />
+      ) : (
+        <EmptyState
+          icon={ClipboardList}
+          title="No evaluations yet"
+          description="Create your first procurement evaluation to start reviewing vendor quotations."
+          actionLabel="New Evaluation"
+          actionHref="/evaluations/new"
+        />
+      )}
     </div>
   );
 }
