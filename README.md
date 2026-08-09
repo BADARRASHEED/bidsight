@@ -241,3 +241,9 @@ the current implementation.
 
 BidSight is a procurement decision-support system. AI-generated recommendations are
 advisory, and final purchasing decisions remain with authorised users.
+
+## Author
+
+**Badar Butt**
+
+_AI Engineer_
