@@ -91,18 +91,8 @@ function SidebarContents({ onNavigate }: { onNavigate?: () => void }) {
         })}
       </nav>
 
-      <div className="m-4 rounded-lg border border-white/10 bg-white/[0.04] p-4">
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-teal-500/15 text-teal-300">
-            <ShieldCheck className="h-4 w-4" />
-          </span>
-          <div>
-            <p className="text-xs font-semibold text-white">Decision support</p>
-            <p className="mt-1 text-[11px] leading-4 text-slate-400">
-              Scores are deterministic and every AI-extracted value remains reviewable.
-            </p>
-          </div>
-        </div>
+      <div className="px-6 pb-6 pt-4 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-600">
+        Procurement workspace
       </div>
     </div>
   );

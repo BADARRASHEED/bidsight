@@ -129,6 +129,7 @@ export function ComparisonWorkspace({ evaluationId }: { evaluationId: string }) 
       <div className="flex justify-end">
         <ComparisonActions
           evaluationId={evaluationId}
+          vendors={comparison.vendors}
           onScored={setComparison}
           onRecommended={handleRecommended}
         />
@@ -160,7 +161,7 @@ export function ComparisonWorkspace({ evaluationId }: { evaluationId: string }) 
             {isGenerating && <Loader2 className="h-4 w-4 animate-spin text-teal-600" />}
             {isGenerating
               ? "Generating an evidence-based recommendation…"
-              : "Use Refresh recommendation after configuring Gemini."}
+              : "A recommendation has not been generated for these results yet."}
           </CardContent>
         </Card>
       )}

@@ -155,8 +155,8 @@ class EvaluationRead(APIModel):
     updated_at: datetime
 
 
-class GeminiQuotationExtraction(BaseModel):
-    """Strict schema supplied to Gemini and validated before persistence."""
+class FoundryQuotationExtractionBase(BaseModel):
+    """Scalar quotation fields shared by provider and application schemas."""
 
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
@@ -174,14 +174,52 @@ class GeminiQuotationExtraction(BaseModel):
     payment_terms: str | None = Field(default=None, max_length=1000)
     support_details: str | None = Field(default=None, max_length=2000)
     quotation_validity_days: int | None = Field(default=None, ge=0)
-    specifications: dict[str, str | int | float] = Field(default_factory=dict)
     missing_information: list[str] = Field(default_factory=list)
-    source_pages: dict[str, int] = Field(default_factory=dict)
 
     @field_validator("currency")
     @classmethod
     def uppercase_currency(cls, value: str | None) -> str | None:
         return value.upper() if value else value
+
+
+class FoundryQuotationExtraction(FoundryQuotationExtractionBase):
+    """Validated quotation data returned to the BidSight application."""
+
+    specifications: dict[str, str | int | float] = Field(default_factory=dict)
+    source_pages: dict[str, int] = Field(default_factory=dict)
+
+
+class FoundrySpecificationItem(BaseModel):
+    """Foundry-compatible representation of one technical specification."""
+
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    name: NonEmptyText = Field(max_length=200)
+    value: str | int | float
+
+
+class FoundrySourcePageItem(BaseModel):
+    """Foundry-compatible representation of one field-to-page reference."""
+
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    field_name: NonEmptyText = Field(max_length=200)
+    page_number: int = Field(ge=1)
+
+
+class FoundryQuotationExtractionResponse(FoundryQuotationExtractionBase):
+    """Strict provider schema without free-form object properties."""
+
+    specifications: list[FoundrySpecificationItem] = Field(default_factory=list)
+    source_pages: list[FoundrySourcePageItem] = Field(default_factory=list)
+
+    def to_application_model(self) -> FoundryQuotationExtraction:
+        scalar_values = self.model_dump(exclude={"specifications", "source_pages"})
+        return FoundryQuotationExtraction(
+            **scalar_values,
+            specifications={item.name: item.value for item in self.specifications},
+            source_pages={item.field_name: item.page_number for item in self.source_pages},
+        )
 
 
 class QuotationExtractionUpdate(APIModel):
@@ -285,8 +323,8 @@ class VendorComparisonRead(APIModel):
     missing_information: list[str] = Field(default_factory=list)
 
 
-class GeminiRecommendation(BaseModel):
-    """Strict recommendation format returned by Gemini."""
+class FoundryRecommendation(BaseModel):
+    """Strict recommendation format returned by Microsoft Foundry."""
 
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 

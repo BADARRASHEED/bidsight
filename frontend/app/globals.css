@@ -63,3 +63,42 @@
     scrollbar-color: #cbd5e1 transparent;
   }
 }
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 12mm;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  aside,
+  header,
+  [data-print-hide],
+  button {
+    display: none !important;
+  }
+
+  main {
+    max-width: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .lg\:pl-\[260px\] {
+    padding-left: 0 !important;
+  }
+
+  .shadow-sm,
+  .shadow-lift {
+    box-shadow: none !important;
+  }
+
+  table,
+  tr,
+  section {
+    break-inside: avoid;
+  }
+}

@@ -8,7 +8,7 @@ from sqlmodel import Session, SQLModel, create_engine
 from app.config import Settings
 from app.database import get_session
 from app.main import app
-from app.schemas import GeminiQuotationExtraction, GeminiRecommendation
+from app.schemas import FoundryQuotationExtraction, FoundryRecommendation
 
 
 def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> None:
@@ -24,10 +24,12 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
             yield session
 
     test_settings = Settings(
-        gemini_api_key="test-key",
+        foundry_endpoint="https://example-resource.services.ai.azure.com",
+        foundry_api_key="test-key",
         upload_dir=str(tmp_path / "uploads"),
     )
     monkeypatch.setattr("app.routers.quotations.get_settings", lambda: test_settings)
+    monkeypatch.setattr("app.routers.evaluations.get_settings", lambda: test_settings)
     monkeypatch.setattr(
         "app.routers.quotations.extract_pdf_text",
         lambda _path: "verified quotation fixture text",
@@ -35,7 +37,7 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
 
     extractions = iter(
         [
-            GeminiQuotationExtraction(
+            FoundryQuotationExtraction(
                 vendor_name="TechCore Solutions",
                 product_model="Dell Latitude 5550",
                 quantity=25,
@@ -53,7 +55,7 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
                     "Storage": "512 GB SSD",
                 },
             ),
-            GeminiQuotationExtraction(
+            FoundryQuotationExtraction(
                 vendor_name="Digital Systems",
                 product_model="HP ProBook 440 G10",
                 quantity=25,
@@ -71,7 +73,7 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
                     "Storage": "512 GB SSD",
                 },
             ),
-            GeminiQuotationExtraction(
+            FoundryQuotationExtraction(
                 vendor_name="Future Computers",
                 product_model="Lenovo ThinkBook 15 G4 IAP",
                 quantity=25,
@@ -97,7 +99,7 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
     )
     monkeypatch.setattr(
         "app.routers.evaluations.generate_recommendation",
-        lambda _evidence: GeminiRecommendation(
+        lambda _evidence: FoundryRecommendation(
             recommended_vendor="TechCore Solutions",
             concise_reasoning="Only TechCore satisfies every mandatory requirement.",
             strengths=["Meets all mandatory requirements"],
@@ -210,6 +212,26 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
         ]
         assert [item["vendorName"] for item in recommended_rows] == ["TechCore Solutions"]
         assert comparison.json()["recommendation"]["recommendedVendor"] == "TechCore Solutions"
+
+        deleted = client.delete(f"/api/quotations/{quotation_ids[1]}")
+        assert deleted.status_code == 204
+
+        updated_evaluation = client.get(f"/api/evaluations/{evaluation_id}")
+        assert updated_evaluation.status_code == 200
+        assert updated_evaluation.json()["quotationsCount"] == 2
+        assert updated_evaluation.json()["recommendedVendor"] is None
+
+        stale_comparison = client.get(f"/api/evaluations/{evaluation_id}/comparison")
+        assert stale_comparison.status_code == 409
+
+        deleted_evaluation = client.delete(f"/api/evaluations/{evaluation_id}")
+        assert deleted_evaluation.status_code == 204
+        assert client.get(f"/api/evaluations/{evaluation_id}").status_code == 404
+        assert all(
+            item["id"] != evaluation_id
+            for item in client.get("/api/evaluations").json()
+        )
+        assert not (test_settings.upload_path / evaluation_id).exists()
     finally:
         app.dependency_overrides.clear()
         client.close()

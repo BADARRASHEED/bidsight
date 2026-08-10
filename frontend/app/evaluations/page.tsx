@@ -1,15 +1,21 @@
 import Link from "next/link";
-import { ClipboardList, Download, Filter, Plus, Search } from "lucide-react";
+import { ClipboardList, Plus } from "lucide-react";
 
 import { EmptyState } from "@/components/EmptyState";
+import { EvaluationsWorkspace } from "@/components/EvaluationsWorkspace";
 import { PageIntro } from "@/components/PageIntro";
-import { RecentEvaluations } from "@/components/RecentEvaluations";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { getEvaluations } from "@/lib/api";
 
-export default async function EvaluationsPage() {
+export default async function EvaluationsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ search?: string | string[] }>;
+}) {
   const evaluations = await getEvaluations().catch(() => []);
+  const params = await searchParams;
+  const initialQuery = Array.isArray(params.search) ? params.search[0] : params.search;
+
   return (
     <div>
       <PageIntro
@@ -24,33 +30,8 @@ export default async function EvaluationsPage() {
         }
       />
 
-      <Card className="mb-5">
-        <CardContent className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <input
-              type="search"
-              placeholder="Search by evaluation title, ID, or category"
-              className="h-10 w-full rounded-md border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-600/10"
-              aria-label="Search evaluations"
-            />
-          </div>
-          <Button variant="outline">
-            <Filter /> Status: All
-          </Button>
-          <Button variant="outline">
-            <Download /> Export list
-          </Button>
-        </CardContent>
-      </Card>
-
       {evaluations.length ? (
-        <RecentEvaluations
-          evaluations={evaluations}
-          title="All evaluations"
-          description={`${evaluations.length} ${evaluations.length === 1 ? "record" : "records"} · Sorted by most recently updated`}
-          showViewAll={false}
-        />
+        <EvaluationsWorkspace evaluations={evaluations} initialQuery={initialQuery ?? ""} />
       ) : (
         <EmptyState
           icon={ClipboardList}

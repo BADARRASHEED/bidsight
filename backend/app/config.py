@@ -13,8 +13,10 @@ class Settings(BaseSettings):
     """Runtime settings loaded from environment variables or a local .env file."""
 
     database_url: str = "sqlite:///./bidsight.db"
-    gemini_api_key: str | None = Field(default=None, repr=False)
-    gemini_model: str = "gemini-2.5-flash"
+    foundry_endpoint: str | None = None
+    foundry_api_key: str | None = Field(default=None, repr=False)
+    foundry_model_deployment: str = "gpt-sol"
+    foundry_request_timeout_seconds: float = Field(default=90, gt=0, le=300)
     upload_dir: str = "uploads"
     frontend_url: str = "http://localhost:3000"
     max_upload_size_mb: int = 10

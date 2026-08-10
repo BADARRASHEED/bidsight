@@ -6,7 +6,7 @@ export default function SettingsPage() {
     <div className="mx-auto max-w-6xl">
       <PageIntro
         title="Settings"
-        description="Manage local frontend defaults and review the deterministic MVP scoring configuration."
+        description="Review active integration settings, local preferences, and evaluation controls."
       />
       <SettingsPanel />
     </div>

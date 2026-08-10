@@ -90,6 +90,12 @@ export function getEvaluation(id: string) {
   return request<Evaluation>(`/api/evaluations/${id}`);
 }
 
+export function deleteEvaluation(id: string) {
+  return request<void>(`/api/evaluations/${id}`, {
+    method: "DELETE",
+  });
+}
+
 export function getHealth() {
   return request<HealthResponse>("/api/health");
 }

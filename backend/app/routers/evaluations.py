@@ -3,12 +3,13 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from decimal import Decimal
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy import delete
 from sqlalchemy.exc import SQLAlchemyError
 from sqlmodel import Session, select
 
 from app.api_helpers import evaluation_to_read, requirement_to_read
+from app.config import get_settings
 from app.database import get_session
 from app.models import Evaluation, Quotation, Requirement, VendorResult
 from app.schemas import (
@@ -23,12 +24,13 @@ from app.schemas import (
     RequirementRead,
     VendorComparisonRead,
 )
-from app.services.gemini_service import (
-    GeminiConfigurationError,
-    GeminiRequestError,
-    GeminiResponseError,
+from app.services.foundry_service import (
+    FoundryConfigurationError,
+    FoundryRequestError,
+    FoundryResponseError,
     generate_recommendation,
 )
+from app.services.pdf_service import PDFServiceError, resolve_saved_pdf
 from app.services.scoring_service import (
     COMPLIANT,
     PARTIALLY_COMPLIANT,
@@ -290,6 +292,64 @@ def update_evaluation(
     return evaluation_to_read(evaluation, session)
 
 
+@router.delete(
+    "/{evaluation_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_evaluation(
+    evaluation_id: str,
+    session: Session = Depends(get_session),
+) -> Response:
+    evaluation = _evaluation_or_404(session, evaluation_id)
+    quotations = session.exec(
+        select(Quotation).where(Quotation.evaluation_id == evaluation.id)
+    ).all()
+    settings = get_settings()
+    saved_pdf_paths = []
+    for quotation in quotations:
+        try:
+            saved_pdf_paths.append(
+                resolve_saved_pdf(
+                    settings.upload_path,
+                    evaluation.id,
+                    quotation.stored_filename,
+                )
+            )
+        except PDFServiceError:
+            # Database cleanup must still succeed when an upload is already missing.
+            continue
+
+    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(delete(Quotation).where(Quotation.evaluation_id == evaluation.id))
+    session.exec(delete(Requirement).where(Requirement.evaluation_id == evaluation.id))
+    session.exec(delete(Evaluation).where(Evaluation.id == evaluation.id))
+    try:
+        session.commit()
+    except SQLAlchemyError as exc:
+        session.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail="The evaluation could not be deleted.",
+        ) from exc
+
+    for pdf_path in saved_pdf_paths:
+        try:
+            pdf_path.unlink(missing_ok=True)
+        except OSError:
+            # The database is already consistent; a locked orphan can be cleaned manually.
+            pass
+
+    upload_root = settings.upload_path.resolve()
+    evaluation_directory = (upload_root / evaluation.id).resolve()
+    if upload_root in evaluation_directory.parents:
+        try:
+            evaluation_directory.rmdir()
+        except OSError:
+            pass
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
 @router.post(
     "/{evaluation_id}/requirements",
     response_model=list[RequirementRead],
@@ -499,11 +559,11 @@ def recommend(
 
     try:
         generated = generate_recommendation(evidence)
-    except GeminiConfigurationError as exc:
+    except FoundryConfigurationError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
-    except GeminiRequestError as exc:
+    except FoundryRequestError as exc:
         raise HTTPException(status_code=502, detail=str(exc)) from exc
-    except GeminiResponseError as exc:
+    except FoundryResponseError as exc:
         raise HTTPException(status_code=502, detail=str(exc)) from exc
 
     vendor_by_name = {item.vendor_name.casefold(): item for item in comparison.vendors}
@@ -511,12 +571,12 @@ def recommend(
     if selected is None:
         raise HTTPException(
             status_code=502,
-            detail="Gemini recommended a vendor that is not part of this evaluation.",
+            detail="Microsoft Foundry recommended a vendor that is not part of this evaluation.",
         )
     if selected.status.value not in {COMPLIANT, PARTIALLY_COMPLIANT}:
         raise HTTPException(
             status_code=502,
-            detail="Gemini recommended an ineligible vendor despite eligible alternatives.",
+            detail="Microsoft Foundry recommended an ineligible vendor despite eligible alternatives.",
         )
 
     recommendation = RecommendationRead(

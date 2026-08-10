@@ -12,10 +12,10 @@ from app.config import get_settings
 from app.database import get_session
 from app.models import Evaluation, Quotation, VendorResult
 from app.schemas import QuotationExtractionUpdate, QuotationRead
-from app.services.gemini_service import (
-    GeminiConfigurationError,
-    GeminiRequestError,
-    GeminiResponseError,
+from app.services.foundry_service import (
+    FoundryConfigurationError,
+    FoundryRequestError,
+    FoundryResponseError,
     extract_quotation,
 )
 from app.services.pdf_service import (
@@ -155,7 +155,9 @@ def delete_quotation(
             Quotation.id != quotation.id,
         )
     ).all()
-    session.exec(delete(VendorResult).where(VendorResult.quotation_id == quotation.id))
+    # Removing one vendor changes price eligibility and every comparative score.
+    # Invalidate the full evaluation result set so stale rankings cannot be shown.
+    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
     session.delete(quotation)
     evaluation.status = "QUOTATIONS_UPLOADED" if remaining else "REQUIREMENTS_READY"
     evaluation.recommended_vendor = None
@@ -208,14 +210,14 @@ def process_quotation(
         session.add(quotation)
         session.commit()
         raise HTTPException(status_code=422, detail=str(exc)) from exc
-    except GeminiConfigurationError as exc:
+    except FoundryConfigurationError as exc:
         quotation.processing_status = "ERROR"
         quotation.processing_error = str(exc)
         quotation.updated_at = datetime.now(timezone.utc)
         session.add(quotation)
         session.commit()
         raise HTTPException(status_code=503, detail=str(exc)) from exc
-    except (GeminiRequestError, GeminiResponseError) as exc:
+    except (FoundryRequestError, FoundryResponseError) as exc:
         quotation.processing_status = "ERROR"
         quotation.processing_error = str(exc)
         quotation.updated_at = datetime.now(timezone.utc)

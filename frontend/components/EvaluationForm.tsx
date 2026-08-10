@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AlertTriangle, ArrowRight, Loader2, Save } from "lucide-react";
 
@@ -78,6 +78,16 @@ export function EvaluationForm() {
     notes: "",
     requirements: initialRequirements,
   });
+
+  useEffect(() => {
+    const savedCurrency = window.localStorage.getItem("bidsight-default-currency");
+    const timer = window.setTimeout(() => {
+      if (savedCurrency && ["PKR", "USD", "EUR", "GBP"].includes(savedCurrency)) {
+        setForm((current) => ({ ...current, currency: savedCurrency }));
+      }
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const errors = {
     title: !form.title.trim(),
