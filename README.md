@@ -132,7 +132,7 @@ The three sample vendors tell a useful procurement story:
 TechCore is not hardcoded as the winner. It emerges because it is the strongest
 eligible quotation after the reviewed data passes through the scoring rules.
 
-The demo files live in `simple-data/`:
+The demo files live in `sample-data/`:
 
 - `laptop-procurement-requirements.pdf`
 - `techcore-solutions-quotation.pdf`
@@ -183,7 +183,7 @@ flowchart TD
 bidsight/
 ├── frontend/              # Next.js procurement workspace
 ├── backend/               # FastAPI API, database, PDF, AI, and scoring logic
-├── simple-data/           # Complete three-vendor demonstration
+├── sample-data/           # Complete three-vendor demonstration
 ├── docs/                  # Product, demo, and Foundry setup guides
 ├── .env.example
 └── README.md
