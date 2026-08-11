@@ -275,5 +275,7 @@ BidSight is a decision-support product, not an automatic purchasing authority.
 The recommendation helps a user understand the evidence and trade-offs, while
 the final purchasing decision remains with the authorised procurement team.
 
+---
+
 **Badar Butt**  
 AI Engineer
