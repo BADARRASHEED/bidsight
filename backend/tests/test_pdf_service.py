@@ -53,7 +53,9 @@ def test_rejects_file_over_size_limit() -> None:
 
 def test_resolve_saved_pdf_rejects_path_traversal(tmp_path: Path) -> None:
     with pytest.raises(InvalidPDFError, match="identifier"):
-        resolve_saved_pdf(tmp_path, "../outside", "12345678-1234-1234-1234-123456789abc.pdf")
+        resolve_saved_pdf(
+            tmp_path, "../outside", "12345678-1234-1234-1234-123456789abc.pdf"
+        )
 
     with pytest.raises(InvalidPDFError, match="name"):
         resolve_saved_pdf(tmp_path, "evaluation-1", "../quotation.pdf")

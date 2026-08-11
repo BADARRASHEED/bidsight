@@ -210,8 +210,13 @@ def test_frontend_compatible_three_vendor_flow(monkeypatch, tmp_path: Path) -> N
         recommended_rows = [
             item for item in comparison.json()["vendors"] if item["isRecommended"]
         ]
-        assert [item["vendorName"] for item in recommended_rows] == ["TechCore Solutions"]
-        assert comparison.json()["recommendation"]["recommendedVendor"] == "TechCore Solutions"
+        assert [item["vendorName"] for item in recommended_rows] == [
+            "TechCore Solutions"
+        ]
+        assert (
+            comparison.json()["recommendation"]["recommendedVendor"]
+            == "TechCore Solutions"
+        )
 
         deleted = client.delete(f"/api/quotations/{quotation_ids[1]}")
         assert deleted.status_code == 204

@@ -91,8 +91,12 @@ class Quotation(SQLModel, table=True):
     currency: str | None = Field(default=None, max_length=3)
     delivery_days: int | None = Field(default=None, ge=0)
     warranty_months: int | None = Field(default=None, ge=0)
-    payment_terms: str | None = Field(default=None, sa_column=Column(Text, nullable=True))
-    support_details: str | None = Field(default=None, sa_column=Column(Text, nullable=True))
+    payment_terms: str | None = Field(
+        default=None, sa_column=Column(Text, nullable=True)
+    )
+    support_details: str | None = Field(
+        default=None, sa_column=Column(Text, nullable=True)
+    )
     quotation_validity_days: int | None = Field(default=None, ge=0)
     specifications: dict[str, str | int | float] = Field(
         default_factory=dict,
@@ -102,14 +106,18 @@ class Quotation(SQLModel, table=True):
         default_factory=dict,
         sa_column=Column(JSON, nullable=False),
     )
-    extracted_text: str | None = Field(default=None, sa_column=Column(Text, nullable=True))
+    extracted_text: str | None = Field(
+        default=None, sa_column=Column(Text, nullable=True)
+    )
     missing_information: list[str] = Field(
         default_factory=list,
         sa_column=Column(JSON, nullable=False),
     )
     processing_status: str = Field(default="UPLOADED", index=True, max_length=20)
     review_status: str = Field(default="PENDING", index=True, max_length=20)
-    processing_error: str | None = Field(default=None, sa_column=Column(Text, nullable=True))
+    processing_error: str | None = Field(
+        default=None, sa_column=Column(Text, nullable=True)
+    )
     created_at: datetime = Field(
         default_factory=utc_now,
         sa_column=Column(DateTime(timezone=True), nullable=False),
@@ -125,7 +133,9 @@ class Quotation(SQLModel, table=True):
 
 class VendorResult(SQLModel, table=True):
     __tablename__ = "vendor_results"
-    __table_args__ = (UniqueConstraint("quotation_id", name="uq_vendor_result_quotation"),)
+    __table_args__ = (
+        UniqueConstraint("quotation_id", name="uq_vendor_result_quotation"),
+    )
 
     id: str = Field(default_factory=new_id, primary_key=True, max_length=36)
     evaluation_id: str = Field(foreign_key="evaluations.id", index=True, max_length=36)
@@ -143,7 +153,9 @@ class VendorResult(SQLModel, table=True):
         default_factory=list,
         sa_column=Column(JSON, nullable=False),
     )
-    risks: list[str] = Field(default_factory=list, sa_column=Column(JSON, nullable=False))
+    risks: list[str] = Field(
+        default_factory=list, sa_column=Column(JSON, nullable=False)
+    )
     missing_information: list[str] = Field(
         default_factory=list,
         sa_column=Column(JSON, nullable=False),

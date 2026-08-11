@@ -5,7 +5,6 @@ from dataclasses import dataclass, field
 from decimal import Decimal, InvalidOperation
 from typing import Any
 
-
 PRICE_WEIGHT = Decimal("0.35")
 TECHNICAL_WEIGHT = Decimal("0.30")
 DELIVERY_WEIGHT = Decimal("0.15")
@@ -115,7 +114,9 @@ def _safe_decimal(value: Decimal | float | int | str | None) -> Decimal | None:
     return result
 
 
-def _parse_measurement(value: Any, declared_unit: str | None = None) -> Measurement | None:
+def _parse_measurement(
+    value: Any, declared_unit: str | None = None
+) -> Measurement | None:
     if value is None or isinstance(value, bool):
         return None
 
@@ -205,7 +206,10 @@ def _actual_requirement_value(
         return quotation.product_name, None
     if "model" in name:
         return quotation.product_model, None
-    return _find_specification(requirement.name, quotation.specifications), requirement.unit
+    return (
+        _find_specification(requirement.name, quotation.specifications),
+        requirement.unit,
+    )
 
 
 def _comparison_operator(requirement: RequirementInput) -> str:
@@ -218,7 +222,10 @@ def _comparison_operator(requirement: RequirementInput) -> str:
         return "eq"
 
     combined = f"{requirement.name} {requirement.value}".lower()
-    if any(token in combined for token in ("maximum", "max ", "at most", "delivery", "budget")):
+    if any(
+        token in combined
+        for token in ("maximum", "max ", "at most", "delivery", "budget")
+    ):
         return "lte"
     if any(token in combined for token in ("minimum", "min ", "at least", "warranty")):
         return "gte"
@@ -273,7 +280,9 @@ def check_requirement(
 ) -> RequirementCheck:
     mandatory = requirement.requirement_type.upper() == "MANDATORY"
     actual, actual_unit = _actual_requirement_value(requirement, quotation)
-    expected_label = f"{requirement.value}{f' {requirement.unit}' if requirement.unit else ''}"
+    expected_label = (
+        f"{requirement.value}{f' {requirement.unit}' if requirement.unit else ''}"
+    )
 
     if actual is None or (isinstance(actual, str) and not actual.strip()):
         return RequirementCheck(
@@ -287,7 +296,11 @@ def check_requirement(
 
     expected_measurement = _parse_measurement(requirement.value, requirement.unit)
     actual_measurement = _parse_measurement(actual, actual_unit)
-    if expected_measurement and actual_measurement and _uses_numeric_comparison(requirement):
+    if (
+        expected_measurement
+        and actual_measurement
+        and _uses_numeric_comparison(requirement)
+    ):
         if (
             expected_measurement.dimension
             and actual_measurement.dimension
@@ -379,7 +392,9 @@ def calculate_weighted_score(
         "payment": payment_score,
         "support": support_score,
     }
-    total = sum(Decimal(str(components[name])) * weight for name, weight in WEIGHTS.items())
+    total = sum(
+        Decimal(str(components[name])) * weight for name, weight in WEIGHTS.items()
+    )
     return round(float(total), 2)
 
 
@@ -393,12 +408,16 @@ def _delivery_score(quotation: QuotationInput, required_days: int | None) -> flo
     return round(max(0.0, required_days / quotation.delivery_days * 100), 2)
 
 
-def _warranty_score(quotation: QuotationInput, required_months: Decimal | None) -> float:
+def _warranty_score(
+    quotation: QuotationInput, required_months: Decimal | None
+) -> float:
     if quotation.warranty_months is None:
         return 0.0
     if required_months is None or required_months <= 0:
         return 100.0
-    return round(min(100.0, quotation.warranty_months / float(required_months) * 100), 2)
+    return round(
+        min(100.0, quotation.warranty_months / float(required_months) * 100), 2
+    )
 
 
 def _payment_score(payment_terms: str | None) -> float:
@@ -443,10 +462,16 @@ def _initial_vendor_score(
 ) -> VendorScore:
     checks = [check_requirement(requirement, quotation) for requirement in requirements]
     mandatory_checks = [check for check in checks if check.mandatory]
-    mandatory_failures = [check.reason for check in mandatory_checks if check.outcome == "FAIL"]
-    mandatory_unknown = [check.reason for check in mandatory_checks if check.outcome == "UNKNOWN"]
+    mandatory_failures = [
+        check.reason for check in mandatory_checks if check.outcome == "FAIL"
+    ]
+    mandatory_unknown = [
+        check.reason for check in mandatory_checks if check.outcome == "UNKNOWN"
+    ]
     preferred_failures = [
-        check.reason for check in checks if not check.mandatory and check.outcome == "FAIL"
+        check.reason
+        for check in checks
+        if not check.mandatory and check.outcome == "FAIL"
     ]
 
     if mandatory_checks:
@@ -514,7 +539,9 @@ def _initial_vendor_score(
         price_score=0.0,
         technical_score=round(technical_score, 2),
         delivery_score=_delivery_score(quotation, required_delivery_days),
-        warranty_score=_warranty_score(quotation, _required_warranty_months(requirements)),
+        warranty_score=_warranty_score(
+            quotation, _required_warranty_months(requirements)
+        ),
         payment_score=_payment_score(quotation.payment_terms),
         support_score=_support_score(quotation.support_details),
         overall_score=0.0,
@@ -551,7 +578,9 @@ def evaluate_vendors(
     lowest_eligible_price = min(eligible_prices) if eligible_prices else None
 
     for score in scores:
-        score.price_score = calculate_price_score(lowest_eligible_price, score.total_price)
+        score.price_score = calculate_price_score(
+            lowest_eligible_price, score.total_price
+        )
         score.overall_score = calculate_weighted_score(
             price_score=score.price_score,
             technical_score=score.technical_score,

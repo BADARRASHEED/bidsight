@@ -104,14 +104,17 @@ def save_pdf(
     )
 
 
-def resolve_saved_pdf(upload_root: Path, evaluation_id: str, stored_filename: str) -> Path:
+def resolve_saved_pdf(
+    upload_root: Path, evaluation_id: str, stored_filename: str
+) -> Path:
     upload_root = upload_root.resolve()
     safe_evaluation_id = re.sub(r"[^A-Za-z0-9_-]", "", evaluation_id)
     if not safe_evaluation_id or safe_evaluation_id != evaluation_id:
         raise InvalidPDFError("The evaluation identifier is invalid.")
-    if (
-        PurePosixPath(stored_filename.replace("\\", "/")).name != stored_filename
-        or not re.fullmatch(r"[0-9a-fA-F-]{36}\.pdf", stored_filename)
+    if PurePosixPath(
+        stored_filename.replace("\\", "/")
+    ).name != stored_filename or not re.fullmatch(
+        r"[0-9a-fA-F-]{36}\.pdf", stored_filename
     ):
         raise InvalidPDFError("The stored PDF name is invalid.")
 
@@ -119,7 +122,10 @@ def resolve_saved_pdf(upload_root: Path, evaluation_id: str, stored_filename: st
     if upload_root not in expected_directory.parents:
         raise InvalidPDFError("The stored PDF path is invalid.")
     candidate = (expected_directory / stored_filename).resolve()
-    if expected_directory not in candidate.parents or candidate.suffix.lower() != ".pdf":
+    if (
+        expected_directory not in candidate.parents
+        or candidate.suffix.lower() != ".pdf"
+    ):
         raise InvalidPDFError("The stored PDF path is invalid.")
     if not candidate.is_file():
         raise InvalidPDFError("The uploaded PDF could not be found.")

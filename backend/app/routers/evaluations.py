@@ -42,7 +42,6 @@ from app.services.scoring_service import (
     evaluate_vendors,
 )
 
-
 router = APIRouter(prefix="/api/evaluations", tags=["evaluations"])
 
 
@@ -118,7 +117,9 @@ def _quotation_input(quotation: Quotation, evaluation: Evaluation) -> QuotationI
     )
 
 
-def _recommendation_from_evaluation(evaluation: Evaluation) -> RecommendationRead | None:
+def _recommendation_from_evaluation(
+    evaluation: Evaluation,
+) -> RecommendationRead | None:
     if not evaluation.recommendation:
         return None
     try:
@@ -156,12 +157,18 @@ def _comparison_response(
         if quotation is None:
             continue
         quotation_input = _quotation_input(quotation, evaluation)
-        checks = [check_requirement(item, quotation_input) for item in scoring_requirements]
+        checks = [
+            check_requirement(item, quotation_input) for item in scoring_requirements
+        ]
         vendors.append(
             VendorComparisonRead(
                 id=result.quotation_id,
                 vendor_name=quotation.vendor_name,
-                total_price=float(quotation.total_price) if quotation.total_price is not None else None,
+                total_price=(
+                    float(quotation.total_price)
+                    if quotation.total_price is not None
+                    else None
+                ),
                 currency=quotation.currency or evaluation.currency,
                 compliance_percentage=result.compliance_percentage,
                 delivery_days=quotation.delivery_days,
@@ -177,7 +184,8 @@ def _comparison_response(
                 rank=result.rank,
                 is_recommended=(
                     bool(evaluation.recommended_vendor)
-                    and quotation.vendor_name.casefold() == evaluation.recommended_vendor.casefold()
+                    and quotation.vendor_name.casefold()
+                    == evaluation.recommended_vendor.casefold()
                 ),
                 failed_requirement=(
                     result.mandatory_failures[0] if result.mandatory_failures else None
@@ -235,13 +243,17 @@ def create_evaluation(
         session.refresh(evaluation)
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="The evaluation could not be created.") from exc
+        raise HTTPException(
+            status_code=500, detail="The evaluation could not be created."
+        ) from exc
     return evaluation_to_read(evaluation, session)
 
 
 @router.get("", response_model=list[EvaluationRead])
 def list_evaluations(session: Session = Depends(get_session)) -> list[EvaluationRead]:
-    evaluations = session.exec(select(Evaluation).order_by(Evaluation.created_at.desc())).all()
+    evaluations = session.exec(
+        select(Evaluation).order_by(Evaluation.created_at.desc())
+    ).all()
     return [evaluation_to_read(item, session) for item in evaluations]
 
 
@@ -278,7 +290,9 @@ def update_evaluation(
             value = value.value
         setattr(evaluation, target, value)
 
-    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(
+        delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id)
+    )
     evaluation.recommended_vendor = None
     evaluation.recommendation = None
     evaluation.updated_at = datetime.now(timezone.utc)
@@ -288,7 +302,9 @@ def update_evaluation(
         session.refresh(evaluation)
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="The evaluation could not be updated.") from exc
+        raise HTTPException(
+            status_code=500, detail="The evaluation could not be updated."
+        ) from exc
     return evaluation_to_read(evaluation, session)
 
 
@@ -319,7 +335,9 @@ def delete_evaluation(
             # Database cleanup must still succeed when an upload is already missing.
             continue
 
-    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(
+        delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id)
+    )
     session.exec(delete(Quotation).where(Quotation.evaluation_id == evaluation.id))
     session.exec(delete(Requirement).where(Requirement.evaluation_id == evaluation.id))
     session.exec(delete(Evaluation).where(Evaluation.id == evaluation.id))
@@ -363,7 +381,9 @@ def add_requirements(
     evaluation = _evaluation_or_404(session, evaluation_id)
     items = payload if isinstance(payload, list) else [payload]
     if not items:
-        raise HTTPException(status_code=422, detail="At least one requirement is required.")
+        raise HTTPException(
+            status_code=422, detail="At least one requirement is required."
+        )
     for item in items:
         session.add(
             Requirement(
@@ -375,7 +395,9 @@ def add_requirements(
                 operator=item.operator,
             )
         )
-    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(
+        delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id)
+    )
     evaluation.status = "REQUIREMENTS_READY"
     evaluation.recommended_vendor = None
     evaluation.recommendation = None
@@ -385,7 +407,9 @@ def add_requirements(
         session.commit()
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="Requirements could not be saved.") from exc
+        raise HTTPException(
+            status_code=500, detail="Requirements could not be saved."
+        ) from exc
     return [requirement_to_read(item) for item in _requirements(session, evaluation.id)]
 
 
@@ -403,7 +427,9 @@ def _save_scores(
     evaluation: Evaluation,
     scores: list[VendorScore],
 ) -> None:
-    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(
+        delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id)
+    )
     for item in scores:
         session.add(
             VendorResult(
@@ -439,7 +465,9 @@ def evaluate(
         .order_by(Quotation.created_at)
     ).all()
     if not quotations:
-        raise HTTPException(status_code=409, detail="No quotations are available for this evaluation.")
+        raise HTTPException(
+            status_code=409, detail="No quotations are available for this evaluation."
+        )
     unreviewed = [
         item.filename
         for item in quotations
@@ -451,7 +479,9 @@ def evaluate(
             detail="All quotation extractions must be processed and reviewed before scoring.",
         )
 
-    requirements = _scoring_requirements(evaluation, _requirements(session, evaluation.id))
+    requirements = _scoring_requirements(
+        evaluation, _requirements(session, evaluation.id)
+    )
     try:
         scores = evaluate_vendors(
             [_quotation_input(item, evaluation) for item in quotations],
@@ -462,7 +492,9 @@ def evaluate(
     except NoQuotationsError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
     except (ValueError, ArithmeticError) as exc:
-        raise HTTPException(status_code=422, detail="Quotation values could not be scored.") from exc
+        raise HTTPException(
+            status_code=422, detail="Quotation values could not be scored."
+        ) from exc
 
     _save_scores(session, evaluation, scores)
     evaluation.status = "SCORED"
@@ -475,7 +507,9 @@ def evaluate(
         session.refresh(evaluation)
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="Evaluation scores could not be saved.") from exc
+        raise HTTPException(
+            status_code=500, detail="Evaluation scores could not be saved."
+        ) from exc
     return _comparison_response(session, evaluation)
 
 
@@ -544,8 +578,16 @@ def recommend(
                     "product_name": quotation.product_name,
                     "product_model": quotation.product_model,
                     "quantity": quotation.quantity,
-                    "unit_price": str(quotation.unit_price) if quotation.unit_price is not None else None,
-                    "total_price": str(quotation.total_price) if quotation.total_price is not None else None,
+                    "unit_price": (
+                        str(quotation.unit_price)
+                        if quotation.unit_price is not None
+                        else None
+                    ),
+                    "total_price": (
+                        str(quotation.total_price)
+                        if quotation.total_price is not None
+                        else None
+                    ),
                     "currency": quotation.currency or evaluation.currency,
                     "delivery_days": quotation.delivery_days,
                     "warranty_months": quotation.warranty_months,
@@ -597,5 +639,7 @@ def recommend(
         session.commit()
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="The recommendation could not be saved.") from exc
+        raise HTTPException(
+            status_code=500, detail="The recommendation could not be saved."
+        ) from exc
     return recommendation

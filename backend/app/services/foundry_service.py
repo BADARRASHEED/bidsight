@@ -121,7 +121,9 @@ def extract_quotation(
     settings: Settings | None = None,
 ) -> FoundryQuotationExtraction:
     if not quotation_text.strip():
-        raise FoundryResponseError("The quotation text is empty and cannot be processed.")
+        raise FoundryResponseError(
+            "The quotation text is empty and cannot be processed."
+        )
 
     active_settings = settings or get_settings()
     client = _client(active_settings)

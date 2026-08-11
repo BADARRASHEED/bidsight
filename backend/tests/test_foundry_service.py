@@ -53,7 +53,11 @@ def test_foundry_endpoint_is_normalized(endpoint: str, expected: str) -> None:
 
 def test_malformed_foundry_response_becomes_useful_error() -> None:
     response = SimpleNamespace(
-        choices=[SimpleNamespace(message=SimpleNamespace(parsed=None, content="not valid JSON"))]
+        choices=[
+            SimpleNamespace(
+                message=SimpleNamespace(parsed=None, content="not valid JSON")
+            )
+        ]
     )
     with pytest.raises(FoundryResponseError, match="malformed structured data"):
         _validated_response(response, FoundryQuotationExtraction)
@@ -67,7 +71,9 @@ def test_empty_foundry_response_becomes_useful_error() -> None:
 def test_valid_parsed_foundry_response_is_returned() -> None:
     expected = FoundryQuotationExtraction(vendor_name="TechCore Solutions")
     response = SimpleNamespace(
-        choices=[SimpleNamespace(message=SimpleNamespace(parsed=expected, refusal=None))]
+        choices=[
+            SimpleNamespace(message=SimpleNamespace(parsed=expected, refusal=None))
+        ]
     )
     assert _validated_response(response, FoundryQuotationExtraction) is expected
 

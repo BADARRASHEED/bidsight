@@ -11,18 +11,23 @@ from app.services.scoring_service import (
     evaluate_vendors,
 )
 
-
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SAMPLE_DIR = REPOSITORY_ROOT / "simple-data"
 
 
 def test_sample_pdfs_and_expected_results_are_consistent() -> None:
-    expected = json.loads((SAMPLE_DIR / "expected-results.json").read_text(encoding="utf-8"))
+    expected = json.loads(
+        (SAMPLE_DIR / "expected-results.json").read_text(encoding="utf-8")
+    )
     evaluation = expected["evaluation"]
     mandatory = evaluation["mandatory_requirements"]
     requirements = [
-        RequirementInput("Processor", mandatory["processor"], requirement_type="MANDATORY"),
-        RequirementInput("Minimum RAM", str(mandatory["ram_gb_minimum"]), "GB", "MANDATORY", "gte"),
+        RequirementInput(
+            "Processor", mandatory["processor"], requirement_type="MANDATORY"
+        ),
+        RequirementInput(
+            "Minimum RAM", str(mandatory["ram_gb_minimum"]), "GB", "MANDATORY", "gte"
+        ),
         RequirementInput(
             "Minimum storage",
             str(mandatory["storage_gb_minimum"]),
@@ -44,7 +49,12 @@ def test_sample_pdfs_and_expected_results_are_consistent() -> None:
             "MANDATORY",
             "lte",
         ),
-        RequirementInput("Quantity", str(evaluation["quantity"]), requirement_type="MANDATORY", operator="eq"),
+        RequirementInput(
+            "Quantity",
+            str(evaluation["quantity"]),
+            requirement_type="MANDATORY",
+            operator="eq",
+        ),
     ]
 
     quotations = []
@@ -56,7 +66,10 @@ def test_sample_pdfs_and_expected_results_are_consistent() -> None:
             str(vendor["total_price"]),
         ):
             assert required_text.replace(",", "") in pdf_text.replace(",", "")
-        assert vendor["quantity"] * vendor["unit_price"] + vendor["tax"] == vendor["total_price"]
+        assert (
+            vendor["quantity"] * vendor["unit_price"] + vendor["tax"]
+            == vendor["total_price"]
+        )
         quotations.append(
             QuotationInput(
                 id=vendor["filename"],

@@ -32,7 +32,9 @@ def evaluation_to_read(evaluation: Evaluation, session: Session) -> EvaluationRe
         .order_by(Requirement.id)
     ).all()
     quotation_count = len(
-        session.exec(select(Quotation.id).where(Quotation.evaluation_id == evaluation.id)).all()
+        session.exec(
+            select(Quotation.id).where(Quotation.evaluation_id == evaluation.id)
+        ).all()
     )
     return EvaluationRead(
         id=evaluation.id,
@@ -68,7 +70,11 @@ def quotation_to_read(quotation: Quotation) -> QuotationRead:
     extraction = None
     if has_extraction:
         extraction = QuotationExtractionRead(
-            vendor_name=quotation.vendor_name if quotation.vendor_name != "Pending extraction" else None,
+            vendor_name=(
+                quotation.vendor_name
+                if quotation.vendor_name != "Pending extraction"
+                else None
+            ),
             product_name=quotation.product_name,
             product_model=quotation.product_model,
             quantity=quotation.quantity,

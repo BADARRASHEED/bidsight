@@ -218,7 +218,9 @@ class FoundryQuotationExtractionResponse(FoundryQuotationExtractionBase):
         return FoundryQuotationExtraction(
             **scalar_values,
             specifications={item.name: item.value for item in self.specifications},
-            source_pages={item.field_name: item.page_number for item in self.source_pages},
+            source_pages={
+                item.field_name: item.page_number for item in self.source_pages
+            },
         )
 
 
@@ -227,9 +229,13 @@ class QuotationExtractionUpdate(APIModel):
     product_name: str | None = Field(default=None, max_length=250)
     product_model: str | None = Field(default=None, max_length=250)
     quantity: int | None = Field(default=None, ge=0)
-    unit_price: Decimal | None = Field(default=None, ge=0, max_digits=16, decimal_places=2)
+    unit_price: Decimal | None = Field(
+        default=None, ge=0, max_digits=16, decimal_places=2
+    )
     currency: str | None = Field(default=None, min_length=3, max_length=3)
-    subtotal: Decimal | None = Field(default=None, ge=0, max_digits=16, decimal_places=2)
+    subtotal: Decimal | None = Field(
+        default=None, ge=0, max_digits=16, decimal_places=2
+    )
     tax_amount: Decimal | None = Field(
         default=None,
         ge=0,
@@ -238,7 +244,9 @@ class QuotationExtractionUpdate(APIModel):
         validation_alias=AliasChoices("tax_amount", "taxAmount", "tax"),
         serialization_alias="taxAmount",
     )
-    total_price: Decimal | None = Field(default=None, ge=0, max_digits=16, decimal_places=2)
+    total_price: Decimal | None = Field(
+        default=None, ge=0, max_digits=16, decimal_places=2
+    )
     delivery_days: int | None = Field(default=None, ge=0)
     warranty_months: int | None = Field(default=None, ge=0)
     payment_terms: str | None = Field(default=None, max_length=1000)
@@ -247,7 +255,9 @@ class QuotationExtractionUpdate(APIModel):
     specifications: dict[str, str | int | float] | None = None
     extraction_notes: list[str] | None = Field(
         default=None,
-        validation_alias=AliasChoices("extraction_notes", "extractionNotes", "missing_information"),
+        validation_alias=AliasChoices(
+            "extraction_notes", "extractionNotes", "missing_information"
+        ),
     )
     source_pages: dict[str, int] | None = None
     reviewed: bool = True

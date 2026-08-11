@@ -2,7 +2,16 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, Response, UploadFile, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    HTTPException,
+    Response,
+    UploadFile,
+    status,
+)
 from sqlalchemy import delete
 from sqlalchemy.exc import SQLAlchemyError
 from sqlmodel import Session, func, select
@@ -27,7 +36,6 @@ from app.services.pdf_service import (
     resolve_saved_pdf,
     save_pdf,
 )
-
 
 router = APIRouter(tags=["quotations"])
 
@@ -59,7 +67,9 @@ async def upload_quotation(
 ) -> QuotationRead:
     evaluation = _evaluation_or_404(session, evaluation_id)
     count = session.exec(
-        select(func.count()).select_from(Quotation).where(Quotation.evaluation_id == evaluation_id)
+        select(func.count())
+        .select_from(Quotation)
+        .where(Quotation.evaluation_id == evaluation_id)
     ).one()
     if count >= 3:
         raise HTTPException(
@@ -108,7 +118,9 @@ async def upload_quotation(
             saved.path.unlink(missing_ok=True)
         except OSError:
             pass
-        raise HTTPException(status_code=500, detail="The quotation could not be saved.") from exc
+        raise HTTPException(
+            status_code=500, detail="The quotation could not be saved."
+        ) from exc
     return quotation_to_read(quotation)
 
 
@@ -157,7 +169,9 @@ def delete_quotation(
     ).all()
     # Removing one vendor changes price eligibility and every comparative score.
     # Invalidate the full evaluation result set so stale rankings cannot be shown.
-    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(
+        delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id)
+    )
     session.delete(quotation)
     evaluation.status = "QUOTATIONS_UPLOADED" if remaining else "REQUIREMENTS_READY"
     evaluation.recommended_vendor = None
@@ -168,7 +182,9 @@ def delete_quotation(
         session.commit()
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="The quotation could not be removed.") from exc
+        raise HTTPException(
+            status_code=500, detail="The quotation could not be removed."
+        ) from exc
 
     if pdf_path is not None:
         try:
@@ -200,7 +216,9 @@ def process_quotation(
     session.commit()
 
     try:
-        pdf_path = resolve_saved_pdf(settings.upload_path, evaluation_id, stored_filename)
+        pdf_path = resolve_saved_pdf(
+            settings.upload_path, evaluation_id, stored_filename
+        )
         extracted_text = extract_pdf_text(pdf_path)
         extraction = extract_quotation(extracted_text, settings=settings)
     except (InvalidPDFError, EmptyPDFError, CorruptedPDFError, PDFServiceError) as exc:
@@ -302,18 +320,22 @@ def update_quotation(
     quotation.processing_error = None
     quotation.updated_at = datetime.now(timezone.utc)
 
-    session.exec(delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id))
+    session.exec(
+        delete(VendorResult).where(VendorResult.evaluation_id == evaluation.id)
+    )
     evaluation.recommended_vendor = None
     evaluation.recommendation = None
     all_quotations = session.exec(
         select(Quotation).where(Quotation.evaluation_id == evaluation.id)
     ).all()
-    all_reviewed = all(
-        item.id == quotation.id or (
-            item.processing_status == "READY" and item.review_status == "REVIEWED"
+    all_reviewed = (
+        all(
+            item.id == quotation.id
+            or (item.processing_status == "READY" and item.review_status == "REVIEWED")
+            for item in all_quotations
         )
-        for item in all_quotations
-    ) and payload.reviewed
+        and payload.reviewed
+    )
     evaluation.status = "READY_FOR_SCORING" if all_reviewed else "REVIEW_REQUIRED"
     evaluation.updated_at = datetime.now(timezone.utc)
     try:
@@ -323,5 +345,7 @@ def update_quotation(
         session.refresh(quotation)
     except SQLAlchemyError as exc:
         session.rollback()
-        raise HTTPException(status_code=500, detail="The quotation could not be updated.") from exc
+        raise HTTPException(
+            status_code=500, detail="The quotation could not be updated."
+        ) from exc
     return quotation_to_read(quotation)
