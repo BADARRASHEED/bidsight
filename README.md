@@ -260,7 +260,7 @@ and 27 backend tests without requiring a live Foundry call during testing.
 
 - [Software Requirements and Implementation Specification](docs/BidSight_MVP_Software_Requirements_and_Implementation_Specification.pdf)
 - [Run and Demo Guide](docs/BidSight_Run_and_Demo_Guide.pdf)
-- [Microsoft Foundry Configuration Guide](docs/BidSight_Microsoft_Foundry_gpt-sol_Configuration_Guide.pdf)
+- [Microsoft Foundry gpt-5.6-sol Configuration Guide](docs/BidSight_Microsoft_Foundry_gpt-5.6-sol_Configuration_Guide.pdf)
 
 ## Where I Would Take It Next
 

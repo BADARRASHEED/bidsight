@@ -1,0 +1,2047 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+/Title (BidSight Microsoft Foundry gpt\0555\0566\055sol Configuration Guide)
+/Author (Badar Butt)
+/Subject (Microsoft Foundry gpt\0555\0566\055sol configuration for BidSight)
+/Keywords (BidSight\054 Microsoft Foundry\054 gpt\0555\0566\055sol\054 procurement\054 configuration)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 6
+/Kids [ 4 0 R 9 0 R 15 0 R 18 0 R 21 0 R 24 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 1445
+>>
+stream
+Gat=*=``=U&:XAWfLOJ%_#R"GI#R@CFf/r;=RAeS3]%"39I,c%aX!>>O7*,oBi*A8l#7n?MnQ@lmD4>4_u+_e"dmQnp7;<F0OFm>8IY4Ji9gH"d"k+?!YR"(7h"9!:+-@Z](.$b)"f)c'0n&5F:1ZN_@m-2.DhlGSQhK**q,[A++BXX"S5DC^NMA>Y$QrU`e\48IDaN!-\[@<2%b!)S:.Q2I6ofP"T$5L5na]\1T$s55@O+8cYQaNb6ICX[TM1Q2skEW<`Lpj6r*&g"$`-k11.FID=Xu_LGiM,^rHu\*:Zr55n^09hGFnSM@4u4U/Acf^:!#oFO>EF"6W(^>PO:MmPdU3],OJa?DPOAb0')NV&NO1=)!d7=I'_k[/ok^bo56#$aYD<WA`jUCPi>Mg+;0-fD@e#jbp$a[;NY4QaU`(lHT(CU3pn$R]P;=r*k/e1.>iD*!Cj=JgW:I+d!IYiSO!sm[c%H0(;9LMM_Po$"\sHNt5=29A!_O'e'Ts`\_JTQW?MTfE'12m.q^gNbIC)Nta.KK2a9l[$3*G_$&_:ggTJ)?k-)bB8T()--AT'E`ZkTO*0",WiT!+AT/cXP$g!)O#_a"muYuPpOGO?k3K\RLbQ'sS>eY".U.?jWeG)@pXJURhc:]V(_@I.!RGKR):Nu&<n2&(m+4?Up$Hd,*<1*`;XJ?+r8^;TBbu'"o(p8(Glc_1TZX:Y0dO0[(_<YdW#OK'9l&-qfeujbeAu8S_JkKrgRq1"0j/;`Ap<9337nYtS?5NZ\NWF?O`KM<+o%'ML:D2CO[aFBM2>(t@=s.\9+\R;oI.TA`2@7g6Ri3HfmD/=rCg?R"UY%Fp_e,hj95Sb]?1(S0Q:C5E7`lf#l/Ia=%JTYT5ri?qf2s_'JM=o,K2ru,kG*KBu@MB?P9LEcMKs@##UVDr.2o#9.kp-Z`!'d++O9=p[R]$V<k^f!\K6qP]aGh[RR3&YVHi"jJ6PB,@[eROIJ@@T5Ns&RR\"b3KAqp\ml_t<(<JLh8.1B?mHEqb5[\PXpCAs2>^@KNOb^2`/iT"e#qE9!D^0fAO;O3=-JhmDbZMNdE"CX.$U0sfGe8M2V>Ut4Moi^Po%HmK>lnQr-UOaee"#%`r0HF;IBTD"&GMFL8T,]VMEq-h`6rh(CHRV>0k\WT7EgeodhT/BhG?7Gm7Hu1c1nVBqY,m;*o4LU2e72cj$uVee>XNe+QHD@HZ,%!\jNi"lR;?;%R06_7KEHbq'ojm=*R]5s&mY3,__S?#a-FBo;SIjf\BVF^%kB`Q>Ti)m^jKld2a<ffH7kge?I7?+M27ST^Lb71J/FB'mWQGN;d_gtV1rAa9csUkdgM6DOqZldQ[Q#"`Lpr<(;5$R=XH.j0ENf.r.Q3"me*Y\N'(P;DMe:P]pHFbn;Wn7p:(PO%o3.ZIFr\5;J+_GI+Cj*eKo&2m=oq@=C+(p!~>
+endstream
+endobj
+6 0 obj
+<<
+/F1 7 0 R
+/F2 8 0 R
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+8 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+9 0 obj
+<<
+/Contents 10 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 11 0 R
+/F1-0 12 0 R
+/F2 13 0 R
+/F3 14 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 8406
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+.847059 .870588 .898039 RG
+.5 w
+n 53.85827 34.01575 m 541.4173 34.01575 l S
+BT /F1 7.5 Tf 9 TL ET
+.466667 .517647 .576471 rg
+BT 1 0 0 1 53.85827 23.24409 Tm (BidSight | Foundry Configuration) Tj T* ET
+BT 1 0 0 1 476.0923 23.24409 Tm (Badar Butt | Page 2) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 764.1969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (1. Foundry's Role in BidSight) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 740.9969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4.7 Tm /F1 9.5 Tf 14.2 TL (Microsoft Foundry has two responsibilities in the application:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 646.9969 cm
+q
+.078431 .137255 .2 rg
+n 0 87 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 68.5 476.2205 -29 re f*
+.952941 .960784 .968627 rg
+n 0 39.5 476.2205 -39.5 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 72.5 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Responsibility) Tj T* ET
+Q
+Q
+q
+1 0 0 1 125.0551 72.5 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Input) Tj T* ET
+Q
+Q
+q
+1 0 0 1 300.8031 72.5 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Output) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 54 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Quotation extraction) Tj T* ET
+Q
+Q
+q
+1 0 0 1 125.0551 54 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Page-labelled text extracted from one PDF) Tj T* ET
+Q
+Q
+q
+1 0 0 1 300.8031 43.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 13.2 Tm /F1 7.8 Tf 10.5 TL (Strict quotation fields, specifications, source) Tj T* (pages, and missing information) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 25 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Recommendation generation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 125.0551 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 23.7 Tm /F1 7.8 Tf 10.5 TL (Reviewed quotations plus Python-generated) Tj T* (compliance, scores, ranks, risks, and missing) Tj T* (information) Tj T* ET
+Q
+Q
+q
+1 0 0 1 300.8031 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 23.7 Tm /F1 7.8 Tf 10.5 TL (Recommended vendor, concise reasoning,) Tj T* (strengths, risks, missing information, and) Tj T* (trade-off explanation) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 87 m 476.2205 87 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 87 l S
+n 476.2205 0 m 476.2205 87 l S
+n 0 68.5 m 476.2205 68.5 l S
+n 0 39.5 m 476.2205 39.5 l S
+n 119.0551 0 m 119.0551 87 l S
+n 294.8031 0 m 294.8031 87 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 590.4969 cm
+q
+.952941 .960784 .968627 rg
+n 0 56.5 487.5591 -56.5 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 10 8 cm
+q
+BT 1 0 0 1 0 31.5 Tm 13.5 TL /F2 9 Tf .078431 .137255 .2 rg (Non-negotiable boundary) Tj /F1 9 Tf  T* (Foundry does not calculate compliance, component scores, price scores, weighted totals, eligibility, or rank. Those) Tj T* (values are produced and enforced by the Python scoring service.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.6 w
+n 0 56.5 m 487.5591 56.5 l S
+n 0 0 m 487.5591 0 l S
+n 0 0 m 0 56.5 l S
+n 487.5591 0 m 487.5591 56.5 l S
+.047059 .419608 .407843 RG
+3 w
+n 0 0 m 0 56.5 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 559.4969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (2. Required Foundry Resources) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 536.2969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (A Microsoft Foundry project and an accessible model deployment.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 518.0969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (A resource inference endpoint compatible with the OpenAI v1 API.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 499.8969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (An API key for that resource.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 481.6969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (The exact deployment name configured in Microsoft Foundry.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 435.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 33.1 Tm /F1 9.5 Tf 14.2 TL (The current repository and environment example use gpt-5.6-sol as the deployment name.) Tj T* -0.101573 Tw (FOUNDRY_MODEL_DEPLOYMENT must match the deployment name exactly; it is not inferred from the underlying) Tj T* 0 Tw (model family.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 411.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 3.5 Tm /F2 11.5 Tf 15 TL (Model capability requirement) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 363.4969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 33.1 Tm /F1 9.5 Tf 14.2 TL (The deployment must support structured chat-completion parsing for the Pydantic schemas used by the service. A) Tj T* (model or endpoint that does not support the requested structured response will produce a controlled processing) Tj T* (error.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 332.4969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (3. Backend Environment Variables) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 282.6969 cm
+%PreformattedPara
+.078431 .137255 .2 rg
+BT 1 0 0 1 8 33.2 Tm /F3 7.6 Tf 10.2 TL (FOUNDRY_ENDPOINT=https://YOUR-RESOURCE.openai.azure.com/openai/v1) Tj T* (FOUNDRY_API_KEY=YOUR_SECRET_KEY) Tj T* (FOUNDRY_MODEL_DEPLOYMENT=gpt-5.6-sol) Tj T* (FOUNDRY_REQUEST_TIMEOUT_SECONDS=90) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 161.1969 cm
+q
+.078431 .137255 .2 rg
+n 0 113.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 95 476.2205 -29 re f*
+.952941 .960784 .968627 rg
+n 0 66 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 47.5 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 29 476.2205 -29 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 99 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Variable) Tj T* ET
+Q
+Q
+q
+1 0 0 1 181.748 99 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Required) Tj T* ET
+Q
+Q
+q
+1 0 0 1 249.7795 99 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Purpose) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 80.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (FOUNDRY_ENDPOINT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 181.748 80.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Yes) Tj T* ET
+Q
+Q
+q
+1 0 0 1 249.7795 70 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 13.2 Tm /F1 7.8 Tf 10.5 TL (Resource-level HTTPS endpoint used as the OpenAI SDK base) Tj T* (URL.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 51.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (FOUNDRY_API_KEY) Tj T* ET
+Q
+Q
+q
+1 0 0 1 181.748 51.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Yes) Tj T* ET
+Q
+Q
+q
+1 0 0 1 249.7795 51.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Backend-only authentication secret.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 33 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (FOUNDRY_MODEL_DEPLOYMENT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 181.748 33 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Yes) Tj T* ET
+Q
+Q
+q
+1 0 0 1 249.7795 33 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Exact deployment name passed as the model parameter.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 14.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (FOUNDRY_REQUEST_TIMEOUT_SECONDS) Tj T* ET
+Q
+Q
+q
+1 0 0 1 181.748 14.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (No) Tj T* ET
+Q
+Q
+q
+1 0 0 1 249.7795 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 13.2 Tm /F1 7.8 Tf 10.5 TL (Request timeout; defaults to 90 and is constrained to 1-300) Tj T* (seconds.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 113.5 m 476.2205 113.5 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 113.5 l S
+n 476.2205 0 m 476.2205 113.5 l S
+n 0 95 m 476.2205 95 l S
+n 0 66 m 476.2205 66 l S
+n 0 47.5 m 476.2205 47.5 l S
+n 0 29 m 476.2205 29 l S
+n 175.748 0 m 175.748 113.5 l S
+n 243.7795 0 m 243.7795 113.5 l S
+Q
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+0 0 595.2756 53.85827 re
+f*
+0.811765 0.847059 0.890196 RG
+0.6 w
+n
+56.69291 48.18898 m
+538.5827 48.18898 l
+S
+0.443137 0.505882 0.592157 rg
+BT
+/F1-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 56.69291 29.76378 Tm
+(BidSight \174 Microsoft Foundry gpt\0555\0566\055sol Configuration) Tj
+T*
+ET
+BT
+1 0 0 1 473.2577 29.76378 Tm
+(Badar Butt \174 Page 2) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+11 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+12 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+13 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+14 0 obj
+<<
+/BaseFont /Courier
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+15 0 obj
+<<
+/Contents 16 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 11 0 R
+/F1-0 17 0 R
+/F2 13 0 R
+/F3 14 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+16 0 obj
+<<
+/Length 7257
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+.847059 .870588 .898039 RG
+.5 w
+n 53.85827 34.01575 m 541.4173 34.01575 l S
+BT /F1 7.5 Tf 9 TL ET
+.466667 .517647 .576471 rg
+BT 1 0 0 1 53.85827 23.24409 Tm (BidSight | Foundry Configuration) Tj T* ET
+BT 1 0 0 1 476.0923 23.24409 Tm (Badar Butt | Page 3) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 764.1969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (4. Use the Correct Endpoint) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 740.9969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4.7 Tm /F1 9.5 Tf 14.2 TL (Accepted endpoint forms include:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 693.1969 cm
+%PreformattedPara
+.078431 .137255 .2 rg
+BT 1 0 0 1 8 33.2 Tm /F3 7.6 Tf 10.2 TL (https://YOUR-RESOURCE.services.ai.azure.com) Tj T* (https://YOUR-RESOURCE.services.ai.azure.com/openai/v1) Tj T* (https://YOUR-RESOURCE.openai.azure.com) Tj T* (https://YOUR-RESOURCE.openai.azure.com/openai/v1) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 642.5969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 33.1 Tm /F1 9.5 Tf 14.2 TL (When no path is supplied, the service appends /openai/v1/. When a path is supplied, it must end in /openai/v1.) Tj T* -0.026912 Tw (Query parameters, fragments, embedded credentials, non-HTTPS URLs, project endpoints, and unrelated paths are) Tj T* 0 Tw (rejected.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 618.5969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 3.5 Tm /F2 11.5 Tf 15 TL (Resource endpoint versus project endpoint) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 529.0969 cm
+q
+.078431 .137255 .2 rg
+n 0 84.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 66 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 47.5 476.2205 -29 re f*
+1 1 1 rg
+n 0 18.5 476.2205 -18.5 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 70 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Endpoint) Tj T* ET
+Q
+Q
+q
+1 0 0 1 153.4016 70 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Use in BidSight) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 51.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Resource inference endpoint) Tj T* ET
+Q
+Q
+q
+1 0 0 1 153.4016 51.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Use this. It is compatible with the OpenAI SDK base_url configured by the backend.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 33 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Foundry project endpoint) Tj T* ET
+Q
+Q
+q
+1 0 0 1 153.4016 22.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 13.2 Tm /F1 7.8 Tf 10.5 TL (Do not use it in FOUNDRY_ENDPOINT. The current service is not implemented with the) Tj T* (Foundry project or agent SDK.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Playground or browser URL) Tj T* ET
+Q
+Q
+q
+1 0 0 1 153.4016 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Do not use it. It is a management page, not an inference base URL.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 84.5 m 476.2205 84.5 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 84.5 l S
+n 476.2205 0 m 476.2205 84.5 l S
+n 0 66 m 476.2205 66 l S
+n 0 47.5 m 476.2205 47.5 l S
+n 0 18.5 m 476.2205 18.5 l S
+n 147.4016 0 m 147.4016 84.5 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 498.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (5. How the Client Is Created) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 438.0969 cm
+%PreformattedPara
+.078431 .137255 .2 rg
+BT 1 0 0 1 8 43.4 Tm /F3 7.6 Tf 10.2 TL (OpenAI\() Tj T* (    base_url=normalised_foundry_endpoint,) Tj T* (    api_key=FOUNDRY_API_KEY,) Tj T* (    timeout=FOUNDRY_REQUEST_TIMEOUT_SECONDS,) Tj T* (\)) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 401.6969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 18.9 Tm /F1 9.5 Tf 14.2 TL -0.029444 Tw (Provider-specific logic is isolated in foundry_service.py. Routers call extract_quotation or generate_recommendation) Tj T* 0 Tw (and translate service errors into controlled HTTP responses. No frontend component calls Foundry directly.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 370.6969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (6. Quotation Extraction Contract) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 319.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 33.1 Tm /F1 9.5 Tf 14.2 TL (The extraction call uses client.beta.chat.completions.parse with FoundryQuotationExtractionResponse as the) Tj T* (response format. The system instruction treats quotation text as untrusted document content and requires facts to) Tj T* (remain faithful to the source.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 295.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 3.5 Tm /F2 11.5 Tf 15 TL (Required extraction behaviour) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 275.8969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Never invent, estimate, infer, or assume a value or commercial term.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 257.6969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Use null when a field is absent or unclear.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 239.4969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (List absent and ambiguous information explicitly.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 221.2969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Return numbers without symbols or separators.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 203.0969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Keep payment and support language concise and faithful.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 184.8969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Capture technical attributes as name-value specification items.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 166.6969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Return source page references where the document supports them.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 142.6969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 3.5 Tm /F2 11.5 Tf 15 TL (Structured fields) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 95.09685 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 33.1 Tm /F1 9.5 Tf 14.2 TL (vendor_name, product_name, product_model, quantity, unit_price, subtotal, total_price, tax, currency,) Tj T* (delivery_days, warranty_months, payment_terms, support_details, quotation_validity_days, specifications,) Tj T* (source_pages, and missing_information.) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+0 0 595.2756 53.85827 re
+f*
+0.811765 0.847059 0.890196 RG
+0.6 w
+n
+56.69291 48.18898 m
+538.5827 48.18898 l
+S
+0.443137 0.505882 0.592157 rg
+BT
+/F1-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 56.69291 29.76378 Tm
+(BidSight \174 Microsoft Foundry gpt\0555\0566\055sol Configuration) Tj
+T*
+ET
+BT
+1 0 0 1 473.2577 29.76378 Tm
+(Badar Butt \174 Page 3) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+17 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+18 0 obj
+<<
+/Contents 19 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 11 0 R
+/F1-0 20 0 R
+/F2 13 0 R
+/F3 14 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+19 0 obj
+<<
+/Length 10939
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+.847059 .870588 .898039 RG
+.5 w
+n 53.85827 34.01575 m 541.4173 34.01575 l S
+BT /F1 7.5 Tf 9 TL ET
+.466667 .517647 .576471 rg
+BT 1 0 0 1 53.85827 23.24409 Tm (BidSight | Foundry Configuration) Tj T* ET
+BT 1 0 0 1 476.0923 23.24409 Tm (Badar Butt | Page 4) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 728.6969 cm
+q
+.952941 .960784 .968627 rg
+n 0 56.5 487.5591 -56.5 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 10 8 cm
+q
+BT 1 0 0 1 0 31.5 Tm 13.5 TL /F2 9 Tf .078431 .137255 .2 rg (Persistence rule) Tj /F1 9 Tf  T* (The provider response is validated by Pydantic before it is converted into the application model and saved. A) Tj T* (malformed response does not overwrite the quotation; the PDF remains available for retry.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.6 w
+n 0 56.5 m 487.5591 56.5 l S
+n 0 0 m 487.5591 0 l S
+n 0 0 m 0 56.5 l S
+n 487.5591 0 m 487.5591 56.5 l S
+.047059 .419608 .407843 RG
+3 w
+n 0 0 m 0 56.5 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 697.6969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (7. Recommendation Contract) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 646.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 33.1 Tm /F1 9.5 Tf 14.2 TL (The recommendation call receives JSON evidence assembled by the evaluation router after deterministic scoring. It) Tj T* (includes the evaluation baseline, requirements, reviewed quotation values, requirement outcomes, component) Tj T* (scores, overall scores, ranks, statuses, failures, risks, and missing information.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 622.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 3.5 Tm /F2 11.5 Tf 15 TL (Required recommendation behaviour) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 602.8969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Use only the supplied structured evidence.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 584.6969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Do not recalculate or alter Python-generated values.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 566.4969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Recommend only an eligible vendor present in the evaluation.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 548.2969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Explain mandatory failures, uncertainty, risk, and cheaper-vendor trade-offs.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 530.0969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Do not invent evidence or approve a purchase automatically.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 506.0969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 3.5 Tm /F2 11.5 Tf 15 TL (Structured recommendation fields) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 371.5969 cm
+q
+.078431 .137255 .2 rg
+n 0 129.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 111 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 92.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 74 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 55.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 37 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 18.5 476.2205 -18.5 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 115 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Field) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 115 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Meaning) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 96.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (recommended_vendor) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 96.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Vendor name selected from eligible evidence.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 78 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (concise_reasoning) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 78 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Decision-focused summary.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 59.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (strengths) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 59.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Evidence-backed reasons supporting the selection.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 41 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (risks) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 41 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Relevant limitations or commercial concerns.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 22.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (missing_information) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 22.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Unresolved evidence that remains explicit.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (tradeoff_explanation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 150.5669 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Why a cheaper alternative was not selected when applicable.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 129.5 m 476.2205 129.5 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 129.5 l S
+n 476.2205 0 m 476.2205 129.5 l S
+n 0 111 m 476.2205 111 l S
+n 0 92.5 m 476.2205 92.5 l S
+n 0 74 m 476.2205 74 l S
+n 0 55.5 m 476.2205 55.5 l S
+n 0 37 m 476.2205 37 l S
+n 0 18.5 m 476.2205 18.5 l S
+n 144.5669 0 m 144.5669 129.5 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 343.1969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 18.9 Tm /F1 9.5 Tf 14.2 TL (After validation, the API independently verifies that the recommended vendor exists in the comparison and has) Tj T* (COMPLIANT or PARTIALLY_COMPLIANT status. An invalid recommendation is rejected with HTTP 502.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 312.1969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (8. Error Mapping and Recovery) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 175.6969 cm
+q
+.078431 .137255 .2 rg
+n 0 127.5 476.2205 -29 re f*
+1 1 1 rg
+n 0 98.5 476.2205 -17.5 re f*
+.952941 .960784 .968627 rg
+n 0 81 476.2205 -27 re f*
+1 1 1 rg
+n 0 54 476.2205 -27 re f*
+.952941 .960784 .968627 rg
+n 0 27 476.2205 -27 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 113 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Condition) Tj T* ET
+Q
+Q
+q
+1 0 0 1 133.5591 113 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Service error) Tj T* ET
+Q
+Q
+q
+1 0 0 1 261.1181 102.5 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 12.9 Tm /F2 8.1 Tf 10.5 TL (API) Tj T* (result) Tj T* ET
+Q
+Q
+q
+1 0 0 1 306.4724 113 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Recovery) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 85 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (Endpoint, key, or deployment missing) Tj T* ET
+Q
+Q
+q
+1 0 0 1 133.5591 85 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (FoundryConfigurationError) Tj T* ET
+Q
+Q
+q
+1 0 0 1 261.1181 85 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (503) Tj T* ET
+Q
+Q
+q
+1 0 0 1 306.4724 85 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (Correct backend environment and redeploy.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 58 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.2 Tm /F1 6.8 Tf 9.5 TL (Network, authentication, quota,) Tj T* (timeout, or provider failure) Tj T* ET
+Q
+Q
+q
+1 0 0 1 133.5591 67.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (FoundryRequestError) Tj T* ET
+Q
+Q
+q
+1 0 0 1 261.1181 67.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (502) Tj T* ET
+Q
+Q
+q
+1 0 0 1 306.4724 67.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (Review provider status and credentials; retry.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 31 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.2 Tm /F1 6.8 Tf 9.5 TL (Empty, refused, or malformed) Tj T* (structured response) Tj T* ET
+Q
+Q
+q
+1 0 0 1 133.5591 40.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (FoundryResponseError) Tj T* ET
+Q
+Q
+q
+1 0 0 1 261.1181 40.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (502) Tj T* ET
+Q
+Q
+q
+1 0 0 1 306.4724 40.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (Keep the PDF, verify model capability, and retry.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.2 Tm /F1 6.8 Tf 9.5 TL (Provider selects an absent or) Tj T* (ineligible vendor) Tj T* ET
+Q
+Q
+q
+1 0 0 1 133.5591 13.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (Router validation failure) Tj T* ET
+Q
+Q
+q
+1 0 0 1 261.1181 13.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 6.8 Tf 9.5 TL (502) Tj T* ET
+Q
+Q
+q
+1 0 0 1 306.4724 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.2 Tm /F1 6.8 Tf 9.5 TL (Inspect evidence and model output; regenerate after) Tj T* (correction.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 127.5 m 476.2205 127.5 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 127.5 l S
+n 476.2205 0 m 476.2205 127.5 l S
+n 0 98.5 m 476.2205 98.5 l S
+n 0 81 m 476.2205 81 l S
+n 0 54 m 476.2205 54 l S
+n 0 27 m 476.2205 27 l S
+n 127.5591 0 m 127.5591 127.5 l S
+n 255.1181 0 m 255.1181 127.5 l S
+n 300.4724 0 m 300.4724 127.5 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 144.6969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (9. Security Requirements) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 121.4969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Store FOUNDRY_API_KEY only in an untracked backend .env or encrypted cloud secret.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 103.2969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Never prefix provider secrets with NEXT_PUBLIC_.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 85.09685 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Do not paste API keys into screenshots, documentation, source code, or client-side settings.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 66.89685 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Rotate a key immediately after accidental exposure.) Tj T* 2.67 0 Td ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+0 0 595.2756 53.85827 re
+f*
+0.811765 0.847059 0.890196 RG
+0.6 w
+n
+56.69291 48.18898 m
+538.5827 48.18898 l
+S
+0.443137 0.505882 0.592157 rg
+BT
+/F1-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 56.69291 29.76378 Tm
+(BidSight \174 Microsoft Foundry gpt\0555\0566\055sol Configuration) Tj
+T*
+ET
+BT
+1 0 0 1 473.2577 29.76378 Tm
+(Badar Butt \174 Page 4) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+20 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+21 0 obj
+<<
+/Contents 22 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 11 0 R
+/F1-0 23 0 R
+/F2 13 0 R
+/F3 14 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+22 0 obj
+<<
+/Length 9435
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+.847059 .870588 .898039 RG
+.5 w
+n 53.85827 34.01575 m 541.4173 34.01575 l S
+BT /F1 7.5 Tf 9 TL ET
+.466667 .517647 .576471 rg
+BT 1 0 0 1 53.85827 23.24409 Tm (BidSight | Foundry Configuration) Tj T* ET
+BT 1 0 0 1 476.0923 23.24409 Tm (Badar Butt | Page 5) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 770.9969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Use separate credentials or resources for development and production where possible.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 752.7969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Limit access through the Foundry resource and hosting-platform permissions.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 734.5969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Treat PDF text and structured evidence as untrusted input; the current prompts explicitly do so.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 703.5969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (10. FastAPI Cloud Configuration) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 680.3969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4.7 Tm /F1 9.5 Tf 14.2 TL (In the FastAPI Cloud app, set the application directory to backend and add:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 591.7969 cm
+%PreformattedPara
+.078431 .137255 .2 rg
+BT 1 0 0 1 8 74 Tm /F3 7.6 Tf 10.2 TL (DATABASE_URL=sqlite:///./bidsight.db) Tj T* (FOUNDRY_ENDPOINT=https://YOUR-RESOURCE.openai.azure.com/openai/v1) Tj T* (FOUNDRY_API_KEY=YOUR_SECRET_KEY) Tj T* (FOUNDRY_MODEL_DEPLOYMENT=gpt-5.6-sol) Tj T* (FOUNDRY_REQUEST_TIMEOUT_SECONDS=90) Tj T* (UPLOAD_DIR=uploads) Tj T* (FRONTEND_URL=https://YOUR-FRONTEND.vercel.app) Tj T* (MAX_UPLOAD_SIZE_MB=10) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 569.5969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Mark FOUNDRY_API_KEY as Secret before saving.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 551.3969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Save and redeploy after any environment change.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 533.1969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Set FRONTEND_URL to the exact Vercel production origin to satisfy CORS.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 514.9969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (In Vercel, set NEXT_PUBLIC_API_URL to the FastAPI Cloud application origin and redeploy.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 483.9969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (11. Configuration Validation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 345.4969 cm
+q
+.078431 .137255 .2 rg
+n 0 129.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 111 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 92.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 74 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 55.5 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 37 476.2205 -18.5 re f*
+.952941 .960784 .968627 rg
+n 0 18.5 476.2205 -18.5 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 115 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Check) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 115 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Expected result) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 96.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (GET /api/health) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 96.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (HTTP 200; this confirms the API is running, not that Foundry is callable.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 78 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Upload a sample quotation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 78 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Quotation record is created with UPLOADED status.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 59.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Process quotation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 59.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Status becomes READY and structured extraction is available.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 41 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Review and score all quotations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 41 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Python comparison is returned without a Foundry scoring call.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 22.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Generate recommendation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 22.5 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Structured recommendation names an eligible vendor from the comparison.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (Inspect logs) Tj T* ET
+Q
+Q
+q
+1 0 0 1 156.2362 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.8 Tf 10.5 TL (No secret values or raw internal traceback are returned to the client.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 129.5 m 476.2205 129.5 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 129.5 l S
+n 476.2205 0 m 476.2205 129.5 l S
+n 0 111 m 476.2205 111 l S
+n 0 92.5 m 476.2205 92.5 l S
+n 0 74 m 476.2205 74 l S
+n 0 55.5 m 476.2205 55.5 l S
+n 0 37 m 476.2205 37 l S
+n 0 18.5 m 476.2205 18.5 l S
+n 150.2362 0 m 150.2362 129.5 l S
+Q
+Q
+Q
+q
+1 0 0 1 53.85827 314.4969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (12. Troubleshooting Reference) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 131.1969 cm
+q
+.078431 .137255 .2 rg
+n 0 174.3 476.2205 -18.5 re f*
+1 1 1 rg
+n 0 155.8 476.2205 -27.6 re f*
+.952941 .960784 .968627 rg
+n 0 128.2 476.2205 -27.6 re f*
+1 1 1 rg
+n 0 100.6 476.2205 -17.8 re f*
+.952941 .960784 .968627 rg
+n 0 82.8 476.2205 -27.6 re f*
+1 1 1 rg
+n 0 55.2 476.2205 -27.6 re f*
+.952941 .960784 .968627 rg
+n 0 27.6 476.2205 -27.6 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 159.8 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Message or symptom) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 159.8 cm
+q
+1 1 1 rg
+BT 1 0 0 1 0 2.4 Tm /F2 8.1 Tf 10.5 TL (Resolution) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 132.2 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.5 Tm /F1 7.1 Tf 9.8 TL (Use the Foundry resource endpoint, optionally ending in) Tj T* (/openai/v1/.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 132.2 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.5 Tm /F1 7.1 Tf 9.8 TL (Replace the project or management endpoint with the resource inference) Tj T* (endpoint.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 114.4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.1 Tf 9.8 TL (Microsoft Foundry API key is not configured.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 104.6 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.5 Tm /F1 7.1 Tf 9.8 TL (Add FOUNDRY_API_KEY to the backend environment as a secret and) Tj T* (redeploy.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 86.8 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.1 Tf 9.8 TL (Microsoft Foundry model deployment name is not configured.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 86.8 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.1 Tf 9.8 TL (Set FOUNDRY_MODEL_DEPLOYMENT to the exact deployment name.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 69 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.1 Tf 9.8 TL (Microsoft Foundry could not process the quotation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 59.2 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.5 Tm /F1 7.1 Tf 9.8 TL (Verify endpoint, key, deployment, model capability, quota, network access, and) Tj T* (timeout.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 41.4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.1 Tf 9.8 TL (Microsoft Foundry returned malformed structured data.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 31.6 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.5 Tm /F1 7.1 Tf 9.8 TL (Use a deployment that supports the requested structured output and retry the) Tj T* (retained PDF.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 13.8 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 2.7 Tm /F1 7.1 Tf 9.8 TL (CORS failure in the browser) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.5984 4 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 12.5 Tm /F1 7.1 Tf 9.8 TL (Set backend FRONTEND_URL to the exact frontend origin; redeploy both) Tj T* (services after environment changes.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.847059 .870588 .898039 RG
+.35 w
+n 0 174.3 m 476.2205 174.3 l S
+n 0 0 m 476.2205 0 l S
+n 0 0 m 0 174.3 l S
+n 476.2205 0 m 476.2205 174.3 l S
+n 0 155.8 m 476.2205 155.8 l S
+n 0 128.2 m 476.2205 128.2 l S
+n 0 100.6 m 476.2205 100.6 l S
+n 0 82.8 m 476.2205 82.8 l S
+n 0 55.2 m 476.2205 55.2 l S
+n 0 27.6 m 476.2205 27.6 l S
+n 212.5984 0 m 212.5984 174.3 l S
+Q
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+0 0 595.2756 53.85827 re
+f*
+0.811765 0.847059 0.890196 RG
+0.6 w
+n
+56.69291 48.18898 m
+538.5827 48.18898 l
+S
+0.443137 0.505882 0.592157 rg
+BT
+/F1-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 56.69291 29.76378 Tm
+(BidSight \174 Microsoft Foundry gpt\0555\0566\055sol Configuration) Tj
+T*
+ET
+BT
+1 0 0 1 473.2577 29.76378 Tm
+(Badar Butt \174 Page 5) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+23 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+24 0 obj
+<<
+/Contents 25 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 11 0 R
+/F1-0 26 0 R
+/F2 13 0 R
+/F3 14 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+25 0 obj
+<<
+/Length 2953
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+.847059 .870588 .898039 RG
+.5 w
+n 53.85827 34.01575 m 541.4173 34.01575 l S
+BT /F1 7.5 Tf 9 TL ET
+.466667 .517647 .576471 rg
+BT 1 0 0 1 53.85827 23.24409 Tm (BidSight | Foundry Configuration) Tj T* ET
+BT 1 0 0 1 476.0923 23.24409 Tm (Badar Butt | Page 6) Tj T* ET
+Q
+q
+1 0 0 1 53.85827 764.1969 cm
+q
+.078431 .137255 .2 rg
+BT 1 0 0 1 0 4 Tm /F2 17 Tf 21 TL (13. Final Operational Checklist) Tj T* ET
+Q
+Q
+q
+1 0 0 1 53.85827 740.9969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Resource inference endpoint uses HTTPS and the supported path.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 722.7969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (API key is current, encrypted, and not exposed publicly.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 704.5969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Deployment name matches Microsoft Foundry exactly.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 686.3969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Configured model supports the structured response used by the application.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 668.1969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (All quotations are reviewed before evaluation.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 649.9969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Recommendation is generated only after Python scores are stored.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 631.7969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (Frontend and backend origins are mutually configured.) Tj T* 2.67 0 Td ET
+Q
+Q
+q
+1 0 0 1 53.85827 613.5969 cm
+q
+BT 1 0 0 1 0 4.7 Tm /F1 10 Tf 12 TL .078431 .137255 .2 rg (-) Tj ET
+.078431 .137255 .2 rg
+BT 1 0 0 1 12 4.7 Tm /F1 9.5 Tf 14.2 TL -2.67 0 Td (A live model call is tested with sample data before a demonstration.) Tj T* 2.67 0 Td ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+0 0 595.2756 53.85827 re
+f*
+0.811765 0.847059 0.890196 RG
+0.6 w
+n
+56.69291 48.18898 m
+538.5827 48.18898 l
+S
+0.443137 0.505882 0.592157 rg
+BT
+/F1-0 7.5 Tf
+9 TL
+ET
+BT
+1 0 0 1 56.69291 29.76378 Tm
+(BidSight \174 Microsoft Foundry gpt\0555\0566\055sol Configuration) Tj
+T*
+ET
+BT
+1 0 0 1 473.2577 29.76378 Tm
+(Badar Butt \174 Page 6) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+26 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+xref
+0 27
+0000000000 65535 f 
+0000000015 00000 n 
+0000000331 00000 n 
+0000000424 00000 n 
+0000000473 00000 n 
+0000000672 00000 n 
+0000002209 00000 n 
+0000002250 00000 n 
+0000002357 00000 n 
+0000002469 00000 n 
+0000002727 00000 n 
+0000011186 00000 n 
+0000011294 00000 n 
+0000011402 00000 n 
+0000011515 00000 n 
+0000011621 00000 n 
+0000011880 00000 n 
+0000019190 00000 n 
+0000019298 00000 n 
+0000019557 00000 n 
+0000030550 00000 n 
+0000030658 00000 n 
+0000030917 00000 n 
+0000040405 00000 n 
+0000040513 00000 n 
+0000040772 00000 n 
+0000043778 00000 n 
+trailer
+<<
+/Size 27
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+43886
+%%EOF
